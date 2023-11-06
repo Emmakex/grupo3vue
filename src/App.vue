@@ -81,8 +81,8 @@
         <div class="container-fluid">
           <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
+              <span class="fs-5 d-none d-sm-inline">Menu</span>
               <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <span class="fs-5 d-none d-sm-inline">Menu</span>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                   <li class="nav-item">
                     <a href="#" class="nav-link align-middle px-0">
@@ -91,10 +91,10 @@
                           <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
                         </svg> 
                       </span>
-                      <p class="ms-1 d-none d-sm-inline active ms-2">Home</p>
+                      <p class="ms-1 d-none d-sm-inline active">Home</p>
                     </a>
                   </li>
-                  <li>
+                  <li class="nav-item">
                     <a href="#" class="nav-link px-0 align-middle">
                       <span class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
@@ -105,62 +105,43 @@
                       </span>
                       <span class="ms-1 d-none d-sm-inline">Tasks</span> 
                     </a>
-                          </li>
-                          <li>
-                              <a href="#" class="nav-link px-0 align-middle">
-                                  <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
-                          </li>
-                          <li>
-                              <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                  <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                              <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                                  <li class="w-100">
-                                      <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                                  </li>
-                              </ul>
-                          </li>
-                          <li>
-                              <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                  <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
-                                  <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                  <li class="w-100">
-                                      <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
-                                  </li>
-                              </ul>
-                          </li>
-                          <li>
-                              <a href="#" class="nav-link px-0 align-middle">
-                                  <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-                          </li>
-                      </ul>
-                      <hr>
-                      <div class="dropdown pb-4">
-                          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                              <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                              <span class="d-none d-sm-inline mx-1">loser</span>
-                          </a>
-                          <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                              <li><a class="dropdown-item" href="#">New project...</a></li>
-                              <li><a class="dropdown-item" href="#">Settings</a></li>
-                              <li><a class="dropdown-item" href="#">Profile</a></li>
-                              <li>
-                                  <hr class="dropdown-divider">
-                              </li>
-                              <li><a class="dropdown-item" href="#">Sign out</a></li>
-                          </ul>
-                      </div>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link px-0 align-middle">
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-week" viewBox="0 0 16 16">
+                          <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                        </svg> 
+                      </span>
+                      <span class="ms-1 d-none d-sm-inline">Calendar</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link px-0 align-middle ">
+                      <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                        </svg>
+                      </span>
+                      <span class="ms-1 d-none d-sm-inline">My Team</span>
+                    </a>
+                  </li>
+                </ul>
+                <hr>
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                        <span class="d-none d-sm-inline mx-1">loser</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
                   </div>
             </div>
           </div>
@@ -259,11 +240,15 @@
 
 /* Styles main */
   /* Styles left menu */
+  .container {
+    max-width: none;
+    --bs-gutter-x: 0;
+  }
   .menu-left {
     background-color: #1C1E2D;
   }
   .menu-left li {
-    width: 100%;
+    width: max-content;
   }
   .menu-left .nav-link {
     display: inline-block;
@@ -271,8 +256,6 @@
   }
   .menu-left span {
     color: #9FA8C7;
-  }
-  .menu-left span {
     padding: 0.1rem 0.4rem 0.5rem;
   }
   .active {
