@@ -164,11 +164,11 @@
         </div>
       </section>
       <section class="col-7 center-section row justify-content-center">
-        <div class="recent-task row mb-5">
+        <div class="recent-task row mb-5 px-0">
           <div>
             <h2>Recent Task</h2>
           </div>
-          <div class="tasks col-4">
+          <div class="tasks col-4 ps-0">
             <div class="card">
               <!-- <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=0" alt="Card image cap"> -->
               <div class="card-body">
@@ -192,7 +192,7 @@
               </div>
             </div>
           </div>
-          <div class="tasks col-4">
+          <div class="tasks col-4 task-2">
             <div class="card">
               <!-- <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=1" alt="Card image cap"> -->
               <div class="card-body">
@@ -216,7 +216,7 @@
               </div>
             </div>
           </div>
-          <div class="tasks col-4">
+          <div class="tasks col-4 pe-0">
             <div class="card">
               <!-- <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=3" alt="Card image cap"> -->
               <div class="card-body">
@@ -246,7 +246,7 @@
             <h2>Task Summary</h2>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="row">
+            <li class="row titulos">
               <div class="col-2">TASK NAME</div>
               <div class="col-4 text-start">TASK DESCRIPTION</div>
               <div class="col-2">STATUS</div>
@@ -342,6 +342,10 @@
     background-color: #23273C;
     border-radius: 10px;
   }
+  .task-2 {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
   .card-title {
     width: fit-content;
     padding: 0.6rem 0.8rem;
@@ -356,5 +360,16 @@
   }
   .card-footer {
     color: #ADB5CF;
+  }
+
+  @media (max-width: 768px) {
+    .recent-task {
+      flex-direction: column;
+    }
+    .tasks {
+      width: 100%;
+      padding: 0;
+      margin-bottom: 20px;
+    }
   }
 </style>
