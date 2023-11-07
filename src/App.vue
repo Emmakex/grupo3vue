@@ -163,14 +163,14 @@
           </div>
         </div>
       </section>
-      <section class="col-7 center-section">
-        <div class="recent-task row">
+      <section class="col-7 center-section row justify-content-center">
+        <div class="recent-task row mb-5">
           <div>
             <h2>Recent Task</h2>
           </div>
           <div class="tasks col-4">
             <div class="card">
-              <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=0" alt="Card image cap">
+              <!-- <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=0" alt="Card image cap"> -->
               <div class="card-body">
                 <h5 class="card-title">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
@@ -194,7 +194,7 @@
           </div>
           <div class="tasks col-4">
             <div class="card">
-              <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=1" alt="Card image cap">
+              <!-- <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=1" alt="Card image cap"> -->
               <div class="card-body">
                 <h5 class="card-title">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
@@ -218,7 +218,7 @@
           </div>
           <div class="tasks col-4">
             <div class="card">
-              <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=3" alt="Card image cap">
+              <!-- <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=3" alt="Card image cap"> -->
               <div class="card-body">
                 <h5 class="card-title">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
@@ -240,6 +240,24 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="task-menu">
+          <div>
+            <h2>Task Summary</h2>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="row">
+              <div class="col-2">TASK NAME</div>
+              <div class="col-4 text-start">TASK DESCRIPTION</div>
+              <div class="col-2">STATUS</div>
+              <div class="col-2">DUE DATE</div>
+              <div class="col-2">TEAM</div>
+            </li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Morbi leo risus</li>
+            <li class="list-group-item">Porta ac consectetur ac</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
         </div>
       </section>
       <section class="col-2"></section>
@@ -314,14 +332,13 @@
   /* /End styles left menu  */
 
   /* Styles center-section */
-  .recent-task h2 {
+  .recent-task h2, .task-menu h2 {
     color: #fff;
     width: 10%;
     margin-top: 2rem;
-    margin-bottom: 2rem;
     font-size: 24px;
   }
-  .tasks .card {
+  .tasks .card, .task-menu {
     background-color: #23273C;
     border-radius: 10px;
   }
