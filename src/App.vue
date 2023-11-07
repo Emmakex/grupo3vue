@@ -1,8 +1,9 @@
 <script>
+import { ref, reactive, onMounted } from 'vue';
   export default{
       data() {
         return {
-          datos: this.mostrarFechayhora() //variable para mostrar la fecha en el nav
+          datos: this.mostrarFechayhora(), //variable para mostrar la fecha en el nav
         }
       },
       methods:{
@@ -21,8 +22,70 @@
       },
       mounted () {
         this.mostrarFechayhora()
-      }  
-    }
+      },
+    name: 'CalendarComponent',
+    setup() {
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+      
+      const currentDate = ref(new Date());
+      const calendar = reactive({
+        month: currentDate.value.getMonth(),
+        year: currentDate.value.getFullYear(),
+        days: []
+      });
+
+      const daysInMonth = (month, year) => {
+        return new Date(year, month + 1, 0).getDate();
+      };
+
+      const updateCalendar = () => {
+        const firstDay = new Date(calendar.year, calendar.month, 1).getDay();
+        const days = daysInMonth(calendar.month, calendar.year);
+        calendar.days = [];
+
+        let date = 1;
+        for (let i = 0; i < 6; i++) {
+          let week = [];
+          for (let j = 0; j < 7; j++) {
+            if (i === 0 && j < firstDay) {
+              week.push('');
+            } else if (date > days) {
+              week.push('');
+            } else {
+              week.push(date);
+              date++;
+            }
+          }
+          calendar.days.push(week);
+        }
+      };
+
+      const prevMonth = () => {
+        if (calendar.month === 0) {
+          calendar.month = 11;
+          calendar.year--;
+        } else {
+          calendar.month--;
+        }
+        updateCalendar();
+      };
+
+      const nextMonth = () => {
+        if (calendar.month === 11) {
+          calendar.month = 0;
+          calendar.year++;
+        } else {
+          calendar.month++;
+        }
+        updateCalendar();
+      };
+
+      onMounted(updateCalendar);
+
+      return { monthNames, calendar, prevMonth, nextMonth };
+  }
+}
 </script>
 
 <template>
@@ -163,7 +226,7 @@
           </div>
         </div>
       </section>
-      <section class="col-7 center-section row justify-content-center">
+      <section class="col-6 center-section row justify-content-center">
         <div class="recent-task row mb-5 px-0">
           <div>
             <h2>Recent Task</h2>
@@ -247,20 +310,65 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="row titulos">
-              <div class="col-2">TASK NAME</div>
-              <div class="col-4 text-start">TASK DESCRIPTION</div>
-              <div class="col-2">STATUS</div>
+              <div class="col-3">TASK NAME</div>
+              <div class="col-3 text-start">TASK DESCRIPTION</div>
+              <div class="col-2 offset-2">STATUS</div>
               <div class="col-2">DUE DATE</div>
-              <div class="col-2">TEAM</div>
             </li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            <li class="row">
+              <div class="col-3 colorTask">Agency landingpage</div>
+              <div class="col-3 colorTask text-start">Agency landingpage</div>
+              <div class="col-2 colorToDo offset-2">To Do</div>
+              <div class="col-2 colorTask">Nov 30 2021</div>
+            </li>
+            <li class="row">
+              <div class="col-3 colorTask">Create website for...</div>
+              <div class="col-3 colorTask text-start">Create website for...</div>
+              <div class="col-2 colorOnGoing offset-2">On going</div>
+              <div class="col-2 colorTask">Sep 12 2021</div>
+            </li>
+            <li class="row">
+              <div class="col-3 colorTask">Bussines branding</div>
+              <div class="col-3 colorTask text-start">Bussines branding</div>
+              <div class="col-2 colorOnGoing offset-2">On going</div>
+              <div class="col-2 colorTask">Aug 25 2021</div>
+            </li>
+            <li class="row">
+              <div class="col-3 colorTask">NFTs product update</div>
+              <div class="col-3 colorTask text-start">NFTs product update</div>
+              <div class="col-2 colorFinished offset-2">Finished</div>
+              <div class="col-2 colorTask">Aug 07 2021</div>
+            </li>
           </ul>
         </div>
       </section>
-      <section class="col-2"></section>
+      <section class="col-3 calendar ms-5">
+        <div class="container mt-5">
+          <div class="row calendarContainer">
+            <div class="col">
+              <h4 class="text-center mb-3">{{ monthNames[calendar.month] }} {{ calendar.year }}</h4>
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <button @click="prevMonth" class="btn btn-sm btn-primary">&lt; Prev</button>
+                <button @click="nextMonth" class="btn btn-sm btn-primary">Next &gt;</button>
+              </div>
+              <div class="row calendar-header text-center fw-bold">
+                <div class="col">Su</div>
+                <div class="col">Mo</div>
+                <div class="col">Tu</div>
+                <div class="col">We</div>
+                <div class="col">Th</div>
+                <div class="col">Fr</div>
+                <div class="col">Sa</div>
+              </div>
+              <div class="row" v-for="(week, index) in calendar.days" :key="index">
+                <div class="col calendar-day" v-for="(day, index) in week" :key="index">
+                  {{ day }}
+                </div>
+              </div>
+            </div>
+         </div>
+        </div>
+      </section>
     </div>
   </main>
 </template>
@@ -305,7 +413,7 @@
 
 /* Styles main */
   /* Styles left menu */
-  .container {
+  .container, .calendarContainer {
     max-width: none;
     --bs-gutter-x: 0;
   }
@@ -332,44 +440,84 @@
   /* /End styles left menu  */
 
   /* Styles center-section */
-  .recent-task h2, .task-menu h2 {
-    color: #fff;
-    width: 10%;
-    margin-top: 2rem;
-    font-size: 24px;
-  }
-  .tasks .card, .task-menu {
-    background-color: #23273C;
-    border-radius: 10px;
-  }
-  .task-2 {
-    padding-left: 0.4rem;
-    padding-right: 0.4rem;
-  }
-  .card-title {
-    width: fit-content;
-    padding: 0.6rem 0.8rem;
-    margin-bottom: 1.5rem;
-    color: #fff;
-    background-color: #E1546E;
-    border-radius: 40px;
-    font-size: 16px;
-  }
-  .card-text {
-    width: 50%;
-  }
-  .card-footer {
-    color: #ADB5CF;
-  }
-
-  @media (max-width: 768px) {
-    .recent-task {
-      flex-direction: column;
+    /* Styles recent task */
+    .recent-task h2, .task-menu h2 {
+      color: #fff;
+      width: 10%;
+      margin-top: 2rem;
+      font-size: 24px;
     }
-    .tasks {
-      width: 100%;
-      padding: 0;
+    .tasks .card, .task-menu {
+      background-color: #23273C;
+      border-radius: 10px;
+    }
+    .task-2 {
+      padding-left: 0.4rem;
+      padding-right: 0.4rem;
+    }
+    .card-title {
+      width: fit-content;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      background-color: #E1546E;
+      border-radius: 40px;
+      font-size: 16px;
+    }
+    .card-text {
+      width: 60%;
+    }
+    .card-footer {
+      color: #ADB5CF;
+    }
+
+
+    @media (max-width: 768px) {
+      .recent-task {
+        flex-direction: column;
+      }
+      .tasks {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 20px;
+      }
+    }
+    /* / End styles recent task */
+    /* Styles list task */
+    .titulos {
+      color: #6B6F8B;
+    }
+    li.row {
+      margin-top: 20px;
       margin-bottom: 20px;
     }
-  }
+    .colorTask {
+      color: #CBCEE2;
+    }
+    .colorToDo {
+      color: #FF84BF;
+    }
+    .colorOnGoing {
+      color: #69A5FF;
+    }
+    .colorFinished {
+      color: #3FDDC0;
+    }
+    /* / End styles list task */
+    /* Styles calendar */
+    .calendar-day {
+      height: 50px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #BDC5E0;
+    }
+    .calendar-header {
+      background-color: #f7f7f7;
+      padding: 2px 0;
+    }
+    .calendar-header .col, .calendar-day .col {
+      padding: 0;
+    }
 </style>
