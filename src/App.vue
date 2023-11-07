@@ -9,13 +9,13 @@
           mostrarFechayhora: function () {
             const fullDate = new Date(); // Guarda la fecha
             const date = fullDate.getDate(); // Guarda el día del mes en número
-            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; // Array con los días de la semana, para guardar en el string el día que es
-            const day = days[fullDate.getDay()]; // Guarda en una variable el string con el día de la semana
+            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday']; // Array con los días de la semana, para guardar en el string el día que es
+            const day = days[fullDate.getDay() - 1]; // Guarda en una variable el string con el día de la semana (-1 porque el array empieza en posición 0)
             const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; // Array con los meses
             const month = months[fullDate.getMonth()]; // Guarda en una variable el string del mes que es
             const year = fullDate.getFullYear(); // Guarda en una variable el año
             const dateCompleted = `${day}, ${date} ${month} ${year}`; // Crea el string para mostrar en el nav
-            
+
             return dateCompleted;
           }
       },
@@ -76,8 +76,8 @@
     </nav>
   </header>
   <main>
-    <div class="container">
-      <section class="col-2 menu-left">
+    <div class="container row">
+      <section class="col-2 menu-left me-4">
         <div class="container-fluid">
           <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
@@ -129,9 +129,9 @@
                   </li>
                 </ul>
                 <hr>
-                <div class="dropdown pb-4">
+                <div class="dropdown me-4">
                   <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="../public/jacinta.jpg" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                      <img src="/jacinta.jpg" alt="hugenerd" width="30" height="30" class="rounded-circle">
                       <span class="d-none d-sm-inline mx-1">Jacinta</span>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -163,7 +163,85 @@
           </div>
         </div>
       </section>
-      <section class="col-8"></section>
+      <section class="col-7 center-section">
+        <div class="recent-task row">
+          <div>
+            <h2>Recent Task</h2>
+          </div>
+          <div class="tasks col-4">
+            <div class="card">
+              <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=0" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                  </svg>
+                  <span class="ms-2">12 Dec</span>
+                </h5>
+                <p class="card-text">Build Prototype and UI Kit</p>
+              </div>
+              <div class="card-footer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip mb-1" viewBox="0 0 16 16">
+                  <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+                </svg>
+                <span class="ms-1 me-2">4</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots-fill mb-1 ms-2" viewBox="0 0 16 16">
+                  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                </svg>
+                <span class="ms-2">12</span>
+              </div>
+            </div>
+          </div>
+          <div class="tasks col-4">
+            <div class="card">
+              <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=1" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                  </svg>
+                  <span class="ms-2">20 Dec</span>
+                </h5>
+                <p class="card-text">Create color style for client</p>
+              </div>
+              <div class="card-footer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip mb-1" viewBox="0 0 16 16">
+                  <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+                </svg>
+                <span class="ms-1 me-2">2</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots-fill mb-1 ms-2" viewBox="0 0 16 16">
+                  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                </svg>
+                <span class="ms-2">3</span>
+              </div>
+            </div>
+          </div>
+          <div class="tasks col-4">
+            <div class="card">
+              <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=3" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                  </svg>
+                  <span class="ms-2">8 Oct</span>
+                </h5>
+                <p class="card-text">Build smart city and IOT</p>
+              </div>
+              <div class="card-footer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip mb-1" viewBox="0 0 16 16">
+                  <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
+                </svg>
+                <span class="ms-1 me-2">16</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots-fill mb-1 ms-2" viewBox="0 0 16 16">
+                  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                </svg>
+                <span class="ms-2">40</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section class="col-2"></section>
     </div>
   </main>
@@ -232,5 +310,34 @@
   }
   span.active {
     background-color: #3360FF;
+  }
+  /* /End styles left menu  */
+
+  /* Styles center-section */
+  .recent-task h2 {
+    color: #fff;
+    width: 10%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 24px;
+  }
+  .tasks .card {
+    background-color: #23273C;
+    border-radius: 10px;
+  }
+  .card-title {
+    width: fit-content;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    background-color: #E1546E;
+    border-radius: 40px;
+    font-size: 16px;
+  }
+  .card-text {
+    width: 50%;
+  }
+  .card-footer {
+    color: #ADB5CF;
   }
 </style>
