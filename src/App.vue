@@ -1,9 +1,42 @@
 <script>
 import { ref, reactive, onMounted } from 'vue';
+import lista from './lista.vue';
   export default{
       data() {
         return {
           datos: this.mostrarFechayhora(), //variable para mostrar la fecha en el nav
+          nombresLista : {
+            task1 : {
+                name: "Agency landingpage",
+                description: "Agency landingpage",
+                status: "To Do",
+                date: "Nov 30 2021",
+            },
+            task2 : {
+                name: "Create website for...",
+                description: "Create website for...",
+                status: "To Do",
+                date: "Nov 30 2021"
+            },
+            task3 : {
+                name: "Create website for...",
+                description: "Create website for...",
+                status: "To Do",
+                date: "Nov 30 2021"
+            },
+            task4 : {
+                name: "Create website for...",
+                description: "Create website for...",
+                status: "On going",
+                date: "Nov 30 2021"
+            },
+            task5 : {
+                name: "Create website for...",
+                description: "Create website for...",
+                status: "Finished",
+                date: "Nov 30 2021"
+            }
+          }
         }
       },
       methods:{
@@ -315,13 +348,13 @@ import { ref, reactive, onMounted } from 'vue';
               <div class="col-2 offset-2">STATUS</div>
               <div class="col-2">DUE DATE</div>
             </li>
-            <li class="row">
-              <div class="col-3 colorTask">Agency landingpage</div>
-              <div class="col-3 colorTask text-start">Agency landingpage</div>
-              <div class="col-2 colorToDo offset-2">To Do</div>
-              <div class="col-2 colorTask">Nov 30 2021</div>
+            <li v-for="(task, key) in nombresLista" class="row" :key="task">
+              <div class="col-3">{{ task.name }}</div>
+              <div class="col-3 text-start">{{ task.description }}</div>
+              <div class="col-2 offset-2">{{ task.status }}</div>
+              <div class="col-2">{{ task.date }}</div>
             </li>
-            <li class="row">
+            <!-- <li class="row">
               <div class="col-3 colorTask">Create website for...</div>
               <div class="col-3 colorTask text-start">Create website for...</div>
               <div class="col-2 colorOnGoing offset-2">On going</div>
@@ -338,7 +371,7 @@ import { ref, reactive, onMounted } from 'vue';
               <div class="col-3 colorTask text-start">NFTs product update</div>
               <div class="col-2 colorFinished offset-2">Finished</div>
               <div class="col-2 colorTask">Aug 07 2021</div>
-            </li>
+            </li> -->
           </ul>
         </div>
       </section>
