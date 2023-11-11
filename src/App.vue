@@ -1,40 +1,39 @@
 <script>
 import { ref, reactive, onMounted } from 'vue';
 import * as dayjs from 'dayjs'
-dayjs().format()
   export default{
       data() {
         return {
-          datos: this.mostrarFechayhora(), //variable para mostrar la fecha en el nav
+          datos: dayjs().format('dddd, DD MMMM YYYY'), //variable para mostrar la fecha en el nav
           nombresLista : [
             {
               name: "Agency landingpage",
               description: "Agency landingpage",
-              status: "To Do",
+              status: "toDo",
               date: "Nov 30 2021",
             },
             {
               name: "Create website for...",
               description: "Create website for...",
-              status: "To Do",
+              status: "toDo",
               date: "Nov 30 2021"
             },
             {
               name: "Create website for...",
               description: "Create website for...",
-              status: "To Do",
+              status: "toDo",
               date: "Nov 30 2021"
             },
             {
               name: "Create website for...",
               description: "Create website for...",
-              status: "On going",
+              status: "onGoing",
               date: "Nov 30 2021"
             },
             {
               name: "Create website for...",
               description: "Create website for...",
-              status: "Finished",
+              status: "finished",
               date: "Nov 30 2021"
             },
           ],
@@ -44,18 +43,23 @@ dayjs().format()
             taskStatus: '',
           }
       },
-      methods:{
-          mostrarFechayhora: function () {
-            const fullDate = new Date(); // Guarda la fecha
-            const date = fullDate.getDate(); // Guarda el día del mes en número
-            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday']; // Array con los días de la semana, para guardar en el string el día que es
-            const day = days[fullDate.getDay() - 1]; // Guarda en una variable el string con el día de la semana (-1 porque el array empieza en posición 0)
-            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; // Array con los meses
-            const month = months[fullDate.getMonth()]; // Guarda en una variable el string del mes que es
-            const year = fullDate.getFullYear(); // Guarda en una variable el año
-            const dateCompleted = `${day}, ${date} ${month} ${year}`; // Crea el string para mostrar en el nav
+      computed :{
+        filtertasks(){
+          return this.nombresLista.slice (0,3)
+        }
+      },
 
-            return dateCompleted;
+      methods:{
+          formatStatus (status) {
+            if (status === "onGoing") {
+              return 'On Going'
+            }
+            else if (status === "finished") {
+              return 'Finished'
+            }
+            else if (status === "toDo") {
+              return 'To Do'
+            }
           },
           mostrarForm: function () {
             let dateFormat = dayjs(this.dueDate).format('MMM DD YYYY');
@@ -63,9 +67,6 @@ dayjs().format()
             
             this.nombresLista.push(taskResume)
           }
-      },
-      mounted () {
-        this.mostrarFechayhora()
       },
     name: 'CalendarComponent',
     setup() {
@@ -275,33 +276,24 @@ dayjs().format()
           <div>
             <h2>Recent Task</h2>
           </div>
-          <div class="tasks col-4 ps-0">
+          <div v-for="(task, key) in filtertasks" class="tasks col-4 ps-0">
             <div class="card">
-              <!-- <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=0" alt="Card image cap"> -->
               <div class="card-body">
                 <h5 class="card-title">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                   </svg>
-                  <span class="ms-2">12 Dec</span>
+                  <span class="ms-2">{{ task.date }}</span>
                 </h5>
-                <p class="card-text">Build Prototype and UI Kit</p>
+                <p class="card-text">{{ task.name }}</p>
               </div>
               <div class="card-footer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip mb-1" viewBox="0 0 16 16">
-                  <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
-                </svg>
-                <span class="ms-1 me-2">4</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots-fill mb-1 ms-2" viewBox="0 0 16 16">
-                  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                </svg>
-                <span class="ms-2">12</span>
+                <p :class="task.status">{{ formatStatus(task.status) }}</p>
               </div>
             </div>
-          </div>
-          <div class="tasks col-4 task-2">
+           </div>
+          <!-- <div class="tasks col-4 task-2">
             <div class="card">
-              <!-- <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=1" alt="Card image cap"> -->
               <div class="card-body">
                 <h5 class="card-title">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
@@ -325,7 +317,6 @@ dayjs().format()
           </div>
           <div class="tasks col-4 pe-0">
             <div class="card">
-              <!-- <img class="card-img-top px-2 pt-2" src="https://picsum.photos/150/50?image=3" alt="Card image cap"> -->
               <div class="card-body">
                 <h5 class="card-title">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
@@ -346,7 +337,7 @@ dayjs().format()
                 <span class="ms-2">40</span>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="task-menu">
           <div>
@@ -359,11 +350,11 @@ dayjs().format()
               <div class="col-2 offset-2">STATUS</div>
               <div class="col-2">DUE DATE</div>
             </li>
-            <li v-for="(task, key) in nombresLista" class="row" :key="task">
-              <div class="col-3 text-white">{{ task.name }}</div>
-              <div class="col-3 text-start text-white">{{ task.description }}</div>
-              <div class="col-2 offset-2 text-white">{{ task.status }}</div>
-              <div class="col-2 text-white">{{ task.date }}</div>
+            <li v-for="(task, key) in nombresLista" class="row text-white" :key="task">
+              <div class="col-3">{{ task.name }}</div>
+              <div class="col-3 text-start">{{ task.description }}</div>
+              <div class="col-2 offset-2" :class="task.status" >{{ formatStatus(task.status) }}</div>
+              <div class="col-2">{{ task.date }}</div>
             </li>
           </ul>
         </div>
@@ -423,17 +414,17 @@ dayjs().format()
                     <div class="row">
                       <h5>Status:</h5>
                       <div>
-                        <input type="radio" name="status" id="toDo" value="To Do" v-model="taskStatus">
+                        <input type="radio" name="status" id="toDo" value="toDo" v-model="taskStatus">
                         <label for="toDo">To Do </label>
                       </div>
 
                       <div>
-                        <input type="radio" name="status" id="onGoing" value="On Going" v-model="taskStatus">
+                        <input type="radio" name="status" id="onGoing" value="onGoing" v-model="taskStatus">
                         <label for="onGoing">On Going </label>   
                       </div>
                       
                       <div>
-                        <input type="radio" name="status" id="finished" value="Finished" v-model="taskStatus">
+                        <input type="radio" name="status" id="finished" value="finished" v-model="taskStatus">
                         <label for="finished">Finished </label>
                       </div>
                     </div>
@@ -571,14 +562,14 @@ dayjs().format()
     .colorTask {
       color: #CBCEE2;
     }
-    .colorToDo {
-      color: #FF84BF;
+    .toDo {
+      color: #3FDDC0;
     }
-    .colorOnGoing {
+    .onGoing {
       color: #69A5FF;
     }
-    .colorFinished {
-      color: #3FDDC0;
+    .finished {
+      color: #FF84BF;
     }
     /* / End styles list task */
     /* Styles calendar */
