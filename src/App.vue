@@ -1,43 +1,48 @@
 <script>
 import { ref, reactive, onMounted } from 'vue';
-import lista from './lista.vue';
+import * as dayjs from 'dayjs'
+dayjs().format()
   export default{
       data() {
         return {
           datos: this.mostrarFechayhora(), //variable para mostrar la fecha en el nav
-          nombresLista : {
-            task1 : {
-                name: "Agency landingpage",
-                description: "Agency landingpage",
-                status: "To Do",
-                date: "Nov 30 2021",
+          nombresLista : [
+            {
+              name: "Agency landingpage",
+              description: "Agency landingpage",
+              status: "To Do",
+              date: "Nov 30 2021",
             },
-            task2 : {
-                name: "Create website for...",
-                description: "Create website for...",
-                status: "To Do",
-                date: "Nov 30 2021"
+            {
+              name: "Create website for...",
+              description: "Create website for...",
+              status: "To Do",
+              date: "Nov 30 2021"
             },
-            task3 : {
-                name: "Create website for...",
-                description: "Create website for...",
-                status: "To Do",
-                date: "Nov 30 2021"
+            {
+              name: "Create website for...",
+              description: "Create website for...",
+              status: "To Do",
+              date: "Nov 30 2021"
             },
-            task4 : {
-                name: "Create website for...",
-                description: "Create website for...",
-                status: "On going",
-                date: "Nov 30 2021"
+            {
+              name: "Create website for...",
+              description: "Create website for...",
+              status: "On going",
+              date: "Nov 30 2021"
             },
-            task5 : {
-                name: "Create website for...",
-                description: "Create website for...",
-                status: "Finished",
-                date: "Nov 30 2021"
-            }
+            {
+              name: "Create website for...",
+              description: "Create website for...",
+              status: "Finished",
+              date: "Nov 30 2021"
+            },
+          ],
+            taskName: '',
+            taskDescription: '',
+            dueDate: '',
+            taskStatus: '',
           }
-        }
       },
       methods:{
           mostrarFechayhora: function () {
@@ -51,6 +56,12 @@ import lista from './lista.vue';
             const dateCompleted = `${day}, ${date} ${month} ${year}`; // Crea el string para mostrar en el nav
 
             return dateCompleted;
+          },
+          mostrarForm: function () {
+            let dateFormat = dayjs(this.dueDate).format('MMM DD YYYY');
+            let taskResume = {name: this.taskName, description: this.taskDescription, date: dateFormat, status: this.taskStatus}
+            
+            this.nombresLista.push(taskResume)
           }
       },
       mounted () {
@@ -349,29 +360,11 @@ import lista from './lista.vue';
               <div class="col-2">DUE DATE</div>
             </li>
             <li v-for="(task, key) in nombresLista" class="row" :key="task">
-              <div class="col-3">{{ task.name }}</div>
-              <div class="col-3 text-start">{{ task.description }}</div>
-              <div class="col-2 offset-2">{{ task.status }}</div>
-              <div class="col-2">{{ task.date }}</div>
+              <div class="col-3 text-white">{{ task.name }}</div>
+              <div class="col-3 text-start text-white">{{ task.description }}</div>
+              <div class="col-2 offset-2 text-white">{{ task.status }}</div>
+              <div class="col-2 text-white">{{ task.date }}</div>
             </li>
-            <!-- <li class="row">
-              <div class="col-3 colorTask">Create website for...</div>
-              <div class="col-3 colorTask text-start">Create website for...</div>
-              <div class="col-2 colorOnGoing offset-2">On going</div>
-              <div class="col-2 colorTask">Sep 12 2021</div>
-            </li>
-            <li class="row">
-              <div class="col-3 colorTask">Bussines branding</div>
-              <div class="col-3 colorTask text-start">Bussines branding</div>
-              <div class="col-2 colorOnGoing offset-2">On going</div>
-              <div class="col-2 colorTask">Aug 25 2021</div>
-            </li>
-            <li class="row">
-              <div class="col-3 colorTask">NFTs product update</div>
-              <div class="col-3 colorTask text-start">NFTs product update</div>
-              <div class="col-2 colorFinished offset-2">Finished</div>
-              <div class="col-2 colorTask">Aug 07 2021</div>
-            </li> -->
           </ul>
         </div>
       </section>
@@ -401,6 +394,57 @@ import lista from './lista.vue';
             </div>
          </div>
         </div>
+      </section>
+      <!-- Contact Form -->
+      <section>
+        <div class="row">
+            <form @submit.prevent="mostrarForm()" method="post" class="bg-dark text-white">
+                <div class="row">
+                    <div class="row">
+                        <label for="name">Task name: </label>
+                        <div class="">
+                            <input type="text" name="name" required id="name" placeholder="Create website for..." v-model="taskName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="email">Due Date:</label>
+                        <div class="">
+                            <input type="date" name="email" required id="email" placeholder="dd/mm/aaaa" v-model="dueDate">
+                        </div>
+                    </div>
+                
+                    <div class="row">
+                        <label for="message" class="">Task description: </label>
+                        <div class="">
+                            <textarea name="message" rows="5" id="message" placeholder="Create website for..." v-model="taskDescription"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                      <h5>Status:</h5>
+                      <div>
+                        <input type="radio" name="status" id="toDo" value="To Do" v-model="taskStatus">
+                        <label for="toDo">To Do </label>
+                      </div>
+
+                      <div>
+                        <input type="radio" name="status" id="onGoing" value="On Going" v-model="taskStatus">
+                        <label for="onGoing">On Going </label>   
+                      </div>
+                      
+                      <div>
+                        <input type="radio" name="status" id="finished" value="Finished" v-model="taskStatus">
+                        <label for="finished">Finished </label>
+                      </div>
+                    </div>
+                    <div class="">
+                        <div class="">
+                            <input type="submit" value="Send">
+                        </div>
+                  </div>
+              </div>
+          </form>
+        </div>
       </section>
     </div>
   </main>
@@ -552,5 +596,12 @@ import lista from './lista.vue';
     }
     .calendar-header .col, .calendar-day .col {
       padding: 0;
+    }
+    /* / End Styles Calendar */
+
+    /* Styles Form */
+    form {
+      width: 50%;
+      margin: auto;
     }
 </style>
