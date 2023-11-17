@@ -555,7 +555,8 @@ const dayjs = _dayjs;
     /* / End styles recent task */
     /* Styles list task */
     .titulos {
-      color: #6B6F8B;
+      color: #ffffff;
+      font-weight: 600;
     }
     li.row {
       margin-top: 20px;
@@ -575,6 +576,9 @@ const dayjs = _dayjs;
     }
     /* / End styles list task */
     /* Styles calendar */
+    h4{
+      color: #fff;
+    }
     .calendar-day {
       height: 50px;
       padding: 0;
