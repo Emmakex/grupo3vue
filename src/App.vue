@@ -1,6 +1,8 @@
 <script>
 import { ref, reactive, onMounted } from 'vue';
-import * as dayjs from 'dayjs'
+import * as _dayjs from 'dayjs';
+const dayjs = _dayjs;
+
   export default{
       data() {
         return {
