@@ -46,13 +46,13 @@ const dayjs = _dayjs;
           }
       },
       computed :{
-        filtertasks(){
+        filtertasks(){ // Función para mostrar las tres primeras tareas en Recent Tasks
           return this.nombresLista.slice (0,3)
         }
       },
 
       methods:{
-          formatStatus (status) {
+          formatStatus (status) { // Función para mostrar el string según el status
             if (status === "onGoing") {
               return 'On Going'
             }
@@ -64,10 +64,10 @@ const dayjs = _dayjs;
             }
           },
           mostrarForm: function () {
-            let dateFormat = dayjs(this.dueDate).format('MMM DD YYYY');
-            let taskResume = {name: this.taskName, description: this.taskDescription, date: dateFormat, status: this.taskStatus}
+            let dateFormat = dayjs(this.dueDate).format('MMM DD YYYY'); // Le da formato a la fecha de la tarea para la lista
+            let taskResume = {name: this.taskName, description: this.taskDescription, date: dateFormat, status: this.taskStatus} // Crea el objeto con la nueva tarea
             
-            this.nombresLista.push(taskResume)
+            this.nombresLista.push(taskResume) // Lo añade a la array de tareas
           }
       },
     name: 'CalendarComponent',
@@ -137,12 +137,15 @@ const dayjs = _dayjs;
 
 <template>
   <header>
+    <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
+        <!-- logo -->
         <div class="logo ms-2">
           <a class="navbar-brand" href="#">Logo</a>
         </div>
         <div>
+          <!-- menú de usuario -->
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="/jacinta.jpg" alt="hugenerd" width="30" height="30" class="rounded-circle">
             <span class="d-none d-sm-inline mx-1">Jacinta</span>
@@ -154,6 +157,7 @@ const dayjs = _dayjs;
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </div>
+        <!-- menú hamburguesa -->
         <div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -187,99 +191,78 @@ const dayjs = _dayjs;
   </header>
   <main>
     <div class="container row">
+      <!--section left -->
       <section class="col-3 col-lg-2 menu-left">
-        <div class="container-fluid">
-          <div class="row flex-nowrap">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
-              <span class="fs-5 d-none d-sm-inline">Menu</span>
-              <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <ul class="nav nav-pills flex-column mb-4 align-items-center align-items-sm-start" id="menu">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link align-middle px-0">
-                      <span class="active">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house active" viewBox="0 0 16 16">
-                          <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
-                        </svg> 
-                      </span>
-                      <p class="ms-1 d-none d-sm-inline active">Home</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link px-0 align-middle">
-                      <span class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
-                          <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
-                          <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
-                        </svg>
-                      </span>
-                      <span class="ms-1 d-none d-sm-inline">Tasks</span> 
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link px-0 align-middle">
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-week" viewBox="0 0 16 16">
-                          <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-                          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                        </svg> 
-                      </span>
-                      <span class="ms-1 d-none d-sm-inline">Calendar</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="nav-link px-0 align-middle ">
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-                          <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
-                        </svg>
-                      </span>
-                      <span class="ms-1 d-none d-sm-inline">My Team</span>
-                    </a>
-                  </li>
-                </ul>
-                <hr>
-                <div class="dropdown me-4">
-                  <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="/jacinta.jpg" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                      <span class="d-none d-sm-inline mx-1">Jacinta</span>
+        <div class="row flex-nowrap container-fluid">
+          <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
+            <!-- menu -->
+            <span class="fs-5 d-none d-sm-inline">Menu</span>
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+              <ul class="nav nav-pills flex-column mb-4 align-items-center align-items-sm-start" id="menu">  
+                <!-- menu home -->
+                <li class="nav-item">
+                  <a href="#" class="nav-link align-middle px-0">
+                    <span class="active">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house active" viewBox="0 0 16 16">
+                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                      </svg> 
+                    </span>
+                    <p class="ms-1 d-none d-sm-inline active">Home</p>
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
-                          <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
-                          <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
-                        </svg>
-                        <span class="text-white ms-2">Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                          <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                        </svg>
-                        <span class="text-white ms-2">Sign out</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                </li>
+                <!-- /menu home -->
+                <!-- menu tasks -->
+                <li class="nav-item">
+                  <a href="#" class="nav-link px-0 align-middle">
+                    <span class="">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/>
+                        <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/>
+                        <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/>
+                      </svg>
+                    </span>
+                    <span class="ms-1 d-none d-sm-inline">Tasks</span> 
+                  </a>
+                </li>
+                <!-- /menu tasks -->
+                <!-- menu calendar -->
+                <li class="nav-item">
+                  <a href="#" class="nav-link px-0 align-middle">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-week" viewBox="0 0 16 16">
+                        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                      </svg> 
+                    </span>
+                    <span class="ms-1 d-none d-sm-inline">Calendar</span>
+                  </a>
+                </li>
+                <!-- /Menu calendar -->
+                <!-- Menu My Team -->
+                <li>
+                  <a href="#" class="nav-link px-0 align-middle ">
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                      </svg>
+                    </span>
+                    <span class="ms-1 d-none d-sm-inline">My Team</span>
+                  </a>
+                </li>
+                <!-- /Menu My Team -->
+              </ul>
             </div>
           </div>
+          <!-- /menu -->
         </div>
       </section>
+      <!-- /Section left -->
+      <!-- Section right -->
       <section class="col-9 col-lg-10 center-section row justify-content-center">
-<!--Recent Task-->
-        <div class="col-md-12 col-xl-7 recent-task row mb-5 px-3">
-          <div>
-            <h2>Recent Task</h2>
-          </div>
-          <div v-for="(task, key) in filtertasks" class="tasks col-4 ps-0">
+        <!--Recent Task-->
+        <h2 class="text-white ms-3">Recent Task</h2>
+        <div class="col-xl-7 recent-task">
+          <div v-for="(task, key) in filtertasks" class="tasks col-md-4">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">
@@ -294,10 +277,10 @@ const dayjs = _dayjs;
                 <p :class="task.status">{{ formatStatus(task.status) }}</p>
               </div>
             </div>
-           </div>
+          </div>
         </div>
-<!--/Recent Task-->
-<!--Calendar-->
+        <!--/Recent Task-->
+        <!--Calendar-->
         <div class="col-md-12 col-xl-5 container mt-5 px-4">
           <div class="row calendarContainer">
             <div class="col">
@@ -323,8 +306,8 @@ const dayjs = _dayjs;
             </div>
           </div>
         </div>
-<!--/Calendar-->
-<!--Task sumary-->
+        <!--/Calendar-->
+        <!--Task sumary-->
         <div class="col-12 task-menu">
           <div>
             <h2>Task Summary</h2>
@@ -344,76 +327,66 @@ const dayjs = _dayjs;
             </li>
           </ul>
         </div>
-<!--/Task sumary-->
+        <!--/Task sumary-->
       </section>
-      <!-- <section class="col-sm-8 col-lg-8 calendar ms-5"> -->
-        
-      <!-- </section> -->
+      <!-- /Section right -->
       <!-- Contact Form -->
       <section>
         <div class="row">
-            <form @submit.prevent="mostrarForm()" method="post" class="bg-dark text-white">
-                <div class="row">
-                    <div class="row">
-                        <label for="name">Task name: </label>
-                        <div class="">
-                            <input type="text" name="name" required id="name" placeholder="Create website for..." v-model="taskName">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="email">Due Date:</label>
-                        <div class="">
-                            <input type="date" name="email" required id="email" placeholder="dd/mm/aaaa" v-model="dueDate">
-                        </div>
-                    </div>
-                
-                    <div class="row">
-                        <label for="message" class="">Task description: </label>
-                        <div class="">
-                            <textarea name="message" rows="5" id="message" placeholder="Create website for..." v-model="taskDescription"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                      <h5>Status:</h5>
-                      <div>
-                        <input type="radio" name="status" id="toDo" value="toDo" v-model="taskStatus">
-                        <label for="toDo">To Do </label>
-                      </div>
-
-                      <div>
-                        <input type="radio" name="status" id="onGoing" value="onGoing" v-model="taskStatus">
-                        <label for="onGoing">On Going </label>   
-                      </div>
-                      
-                      <div>
-                        <input type="radio" name="status" id="finished" value="finished" v-model="taskStatus">
-                        <label for="finished">Finished </label>
-                      </div>
-                    </div>
-                    <div class="">
-                        <div class="">
-                            <input type="submit" value="Send">
-                        </div>
-                  </div>
+          <form @submit.prevent="mostrarForm()" method="post" class="bg-dark text-white">
+            <div class="row">
+              <div class="row">
+                <label for="name">Task name: </label>
+                <div class="">
+                    <input type="text" name="name" required id="name" placeholder="Create website for..." v-model="taskName">
+                </div>
               </div>
+              <div class="row">
+                <label for="email">Due Date:</label>
+                <div class="">
+                    <input type="date" name="email" required id="email" placeholder="dd/mm/aaaa" v-model="dueDate">
+                </div>
+              </div>            
+              <div class="row">
+                <label for="message" class="">Task description: </label>
+                <div class="">
+                    <textarea name="message" rows="5" id="message" placeholder="Create website for..." v-model="taskDescription"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <h5>Status:</h5>
+                <div>
+                  <input type="radio" name="status" id="toDo" value="toDo" v-model="taskStatus">
+                  <label for="toDo">To Do </label>
+                </div>
+                <div>
+                  <input type="radio" name="status" id="onGoing" value="onGoing" v-model="taskStatus">
+                  <label for="onGoing">On Going </label>   
+                </div>                   
+                <div>
+                  <input type="radio" name="status" id="finished" value="finished" v-model="taskStatus">
+                  <label for="finished">Finished </label>
+                </div>
+                </div>
+                <div class="">
+                  <input type="submit" value="Send">
+              </div>
+            </div>
           </form>
         </div>
       </section>
+      <!-- /Contact Form -->
     </div>
   </main>
 </template>
 
 <style scoped>
+  .container {
+    max-width: inherit;
+  }
 /* Header Styles */
   nav {
     background-color: #272A3E !important;
-  }
-  ul.dropdown-menu.show{
-    left: 18%;
-    @media (max-width: 992px) {
-      left: 45%
-    }
   }
   span.navbar-toggler-icon{
     filter: invert(100%);
@@ -450,7 +423,7 @@ const dayjs = _dayjs;
 
 /* Styles main */
   /* Styles left menu */
-  .container, .calendarContainer {
+  .calendarContainer {
     max-width: none;
     --bs-gutter-x: 0;
   }
@@ -478,7 +451,7 @@ const dayjs = _dayjs;
 
   /* Styles center-section */
     /* Styles recent task */
-    .recent-task h2, .task-menu h2 {
+    .task-menu h2 {
       color: #fff;
       margin-top: 2rem;
       font-size: 24px;
@@ -486,6 +459,8 @@ const dayjs = _dayjs;
     .tasks .card, .task-menu {
       background-color: #23273C;
       border-radius: 10px;
+      padding: 0;
+      margin-bottom: 20px;
     }
     .task-2 {
       padding-left: 0.4rem;
@@ -503,14 +478,13 @@ const dayjs = _dayjs;
     .card-footer {
       color: #ADB5CF;
     }
-    @media (max-width: 768px) {
+    @media (min-width: 768px) {
       .recent-task {
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
       }
-      .tasks {
-        width: 100%;
-        padding: 0;
-        margin-bottom: 20px;
+      .card {
+        margin-right: 2rem;
       }
     }
     /* / End styles recent task */
