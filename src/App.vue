@@ -139,46 +139,46 @@ const dayjs = _dayjs;
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <div class="logo col-2 ms-2">
+        <div class="logo ms-2">
           <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/jacinta.jpg" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <span class="d-none d-sm-inline mx-1">Jacinta</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+        <div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
-        <div class="search col-5">
-          <form class="d-flex form-search" role="search">
-            <div class="input-group">
-              <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
-              <span class="input-group-text">
-                <button class="btn btn-search" type="submit">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                  </svg>
-                </button>
-              </span>
-            </div>
-          </form>
-        </div>
-        <div class="collapse navbar-collapse ms-2 col-3" id="navbarSupportedContent">
+        <div class="collapse flexGrow0 navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item date mx-5">
               {{ datos }}
             </li>
-            <li class="nav-item dropdown me-5">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Jacinta
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li class="nav-item date mx-2 my-auto">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
-              </svg>
+            <li>
+              <div class="search">
+                <form class="d-flex form-search" role="search">
+                  <div class="input-group">
+                    <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
+                    <span class="input-group-text">
+                      <button class="btn btn-search" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                      </button>
+                    </span>
+                  </div>
+                </form>
+              </div>
             </li>
           </ul>
         </div>
@@ -187,7 +187,7 @@ const dayjs = _dayjs;
   </header>
   <main>
     <div class="container row">
-      <section class="col-2 menu-left me-4">
+      <section class="col-3 col-lg-2 menu-left">
         <div class="container-fluid">
           <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
@@ -273,8 +273,9 @@ const dayjs = _dayjs;
           </div>
         </div>
       </section>
-      <section class="col-6 center-section row justify-content-center">
-        <div class="recent-task row mb-5 px-0">
+      <section class="col-9 col-lg-10 center-section row justify-content-center">
+<!--Recent Task-->
+        <div class="col-md-12 col-xl-7 recent-task row mb-5 px-3">
           <div>
             <h2>Recent Task</h2>
           </div>
@@ -294,75 +295,10 @@ const dayjs = _dayjs;
               </div>
             </div>
            </div>
-          <!-- <div class="tasks col-4 task-2">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-                  </svg>
-                  <span class="ms-2">20 Dec</span>
-                </h5>
-                <p class="card-text">Create color style for client</p>
-              </div>
-              <div class="card-footer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip mb-1" viewBox="0 0 16 16">
-                  <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
-                </svg>
-                <span class="ms-1 me-2">2</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots-fill mb-1 ms-2" viewBox="0 0 16 16">
-                  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                </svg>
-                <span class="ms-2">3</span>
-              </div>
-            </div>
-          </div>
-          <div class="tasks col-4 pe-0">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
-                  </svg>
-                  <span class="ms-2">8 Oct</span>
-                </h5>
-                <p class="card-text">Build smart city and IOT</p>
-              </div>
-              <div class="card-footer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-paperclip mb-1" viewBox="0 0 16 16">
-                  <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z"/>
-                </svg>
-                <span class="ms-1 me-2">16</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots-fill mb-1 ms-2" viewBox="0 0 16 16">
-                  <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                </svg>
-                <span class="ms-2">40</span>
-              </div>
-            </div>
-          </div> -->
         </div>
-        <div class="task-menu">
-          <div>
-            <h2>Task Summary</h2>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="row titulos">
-              <div class="col-3">TASK NAME</div>
-              <div class="col-3 text-start">TASK DESCRIPTION</div>
-              <div class="col-2 offset-2">STATUS</div>
-              <div class="col-2">DUE DATE</div>
-            </li>
-            <li v-for="(task, key) in nombresLista" class="row text-white" :key="task">
-              <div class="col-3">{{ task.name }}</div>
-              <div class="col-3 text-start">{{ task.description }}</div>
-              <div class="col-2 offset-2" :class="task.status" >{{ formatStatus(task.status) }}</div>
-              <div class="col-2">{{ task.date }}</div>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <section class="col-3 calendar ms-5">
-        <div class="container mt-5">
+<!--/Recent Task-->
+<!--Calendar-->
+        <div class="col-md-12 col-xl-5 container mt-5 px-4">
           <div class="row calendarContainer">
             <div class="col">
               <h4 class="text-center mb-3">{{ monthNames[calendar.month] }} {{ calendar.year }}</h4>
@@ -385,9 +321,34 @@ const dayjs = _dayjs;
                 </div>
               </div>
             </div>
-         </div>
-        </div>
+          </div>
+        </div>
+<!--/Calendar-->
+<!--Task sumary-->
+        <div class="col-12 task-menu">
+          <div>
+            <h2>Task Summary</h2>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="row titulos">
+              <div class="col-3">TASK NAME</div>
+              <div class="col-3 text-start">TASK DESCRIPTION</div>
+              <div class="col-2 offset-2">STATUS</div>
+              <div class="col-2">DUE DATE</div>
+            </li>
+            <li v-for="(task, key) in nombresLista" class="row text-white" :key="task">
+              <div class="col-3">{{ task.name }}</div>
+              <div class="col-3 text-start">{{ task.description }}</div>
+              <div class="col-2 offset-2" :class="task.status" >{{ formatStatus(task.status) }}</div>
+              <div class="col-2">{{ task.date }}</div>
+            </li>
+          </ul>
+        </div>
+<!--/Task sumary-->
       </section>
+      <!-- <section class="col-sm-8 col-lg-8 calendar ms-5"> -->
+        
+      <!-- </section> -->
       <!-- Contact Form -->
       <section>
         <div class="row">
@@ -448,6 +409,18 @@ const dayjs = _dayjs;
   nav {
     background-color: #272A3E !important;
   }
+  ul.dropdown-menu.show{
+    left: 18%;
+    @media (max-width: 992px) {
+      left: 45%
+    }
+  }
+  span.navbar-toggler-icon{
+    filter: invert(100%);
+  }
+  form.d-flex.form-search{
+    width: 100%;
+  }
   .form-control, .input-group-text {
     background-color: #181A21;
     color: #fff;
@@ -463,21 +436,15 @@ const dayjs = _dayjs;
   .btn-search {
     color: #fff;
   }
-  .nav-item {
-    width: 33%;
-  }
   .date {
-    color: #9CA1C2;
-    width: 20%;
+    color: #fff;
     font-size: 0.8rem;
-    justify-content: flex-start;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
   }
-  .dropdown {
-    width: 50%;
-    text-align: right;
-  }
-  .bi-bell {
-    color: #BDC5E0;
+  .flexGrow0{
+    flex-grow: 0;
   }
 /* /End styles header */
 
@@ -513,7 +480,6 @@ const dayjs = _dayjs;
     /* Styles recent task */
     .recent-task h2, .task-menu h2 {
       color: #fff;
-      width: 10%;
       margin-top: 2rem;
       font-size: 24px;
     }
@@ -534,14 +500,9 @@ const dayjs = _dayjs;
       border-radius: 40px;
       font-size: 16px;
     }
-    .card-text {
-      width: 60%;
-    }
     .card-footer {
       color: #ADB5CF;
     }
-
-
     @media (max-width: 768px) {
       .recent-task {
         flex-direction: column;
