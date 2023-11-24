@@ -2,6 +2,7 @@
 import { ref, reactive, onMounted } from 'vue';
 import * as _dayjs from 'dayjs';
 const dayjs = _dayjs;
+import RecentTasks from "./components/RecentTasks.vue";
 
   export default{
       data() {
@@ -131,8 +132,10 @@ const dayjs = _dayjs;
       onMounted(updateCalendar);
 
       return { monthNames, calendar, prevMonth, nextMonth };
-  }
+  },
+  components: { RecentTasks }
 }
+
 </script>
 
 <template>
@@ -260,7 +263,8 @@ const dayjs = _dayjs;
       <!-- Section right -->
       <section class="col-9 col-lg-10 center-section row justify-content-center">
         <!--Recent Task-->
-        <h2 class="text-white ms-3">Recent Task</h2>
+        <RecentTasks />
+        <!-- <h2 class="text-white ms-3">Recent Task</h2>
         <div class="col-xl-7 recent-task">
           <div v-for="(task, key) in filtertasks" class="tasks col-md-4">
             <div class="card">
@@ -278,7 +282,7 @@ const dayjs = _dayjs;
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <!--/Recent Task-->
         <!--Calendar-->
         <div class="col-md-12 col-xl-5 container mt-5 px-4">
