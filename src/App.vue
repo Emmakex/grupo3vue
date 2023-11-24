@@ -47,7 +47,7 @@ import RecentTasks from "./components/RecentTasks.vue";
           }
       },
       computed :{
-        filtertasks(){ // Función para mostrar las tres primeras tareas en Recent Tasks
+        filtertasksArray(){ // Función para mostrar las tres primeras tareas en Recent Tasks
           return this.nombresLista.slice (0,3)
         }
       },
@@ -133,7 +133,9 @@ import RecentTasks from "./components/RecentTasks.vue";
 
       return { monthNames, calendar, prevMonth, nextMonth };
   },
-  components: { RecentTasks }
+  components: { 
+    RecentTasks,
+  },
 }
 
 </script>
@@ -263,7 +265,9 @@ import RecentTasks from "./components/RecentTasks.vue";
       <!-- Section right -->
       <section class="col-9 col-lg-10 center-section row justify-content-center">
         <!--Recent Task-->
-        <RecentTasks />
+        <RecentTasks 
+          :array="filtertasksArray"
+        />
         <!-- <h2 class="text-white ms-3">Recent Task</h2>
         <div class="col-xl-7 recent-task">
           <div v-for="(task, key) in filtertasks" class="tasks col-md-4">

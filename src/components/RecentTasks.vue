@@ -1,16 +1,22 @@
 <script>
 export default {
-  data() {
-    return {
-   }
-}
+        props: {
+            array: Array,
+        },
+        methods: {
+            formatStatus(status) {
+            }
+        },
+        onMounted() {
+            console.log(this.filtertasks);
+        }
 };
 </script>
 
 <template>
     <h2 class="text-white ms-3">Recent Task</h2>
     <div class="col-xl-7 recent-task">
-        <div v-for="(task, key) in filtertasks" class="tasks col-md-4">
+        <div v-for="(task, key) in array" class="tasks col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
