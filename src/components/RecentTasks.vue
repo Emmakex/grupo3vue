@@ -36,5 +36,42 @@ export default {
 </template>
 
 <style scoped>
+.task-menu h2 {
+    color: #fff;
+    margin-top: 2rem;
+    font-size: 24px;
+    }
+.tasks .card, .task-menu {
+    background-color: #23273C;
+    border-radius: 10px;
+    padding: 0;
+    margin-bottom: 20px;
+    color: #fff;
+}
+.task-2 {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+}
+.card-title {
+    width: fit-content;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    background-color: #E1546E;
+    border-radius: 40px;
+    font-size: 16px;
+}
+.card-footer {
+    color: #ADB5CF;
+}
 
+@media (min-width: 768px) {
+.recent-task {
+    display: flex;
+    flex-direction: row;
+}
+.card {
+    margin-right: 2rem;
+    }
+}
 </style>
