@@ -1,79 +1,8 @@
 <script>
-import RecentTasks from './RecentTasks.vue';
 import { ref, reactive, onMounted } from 'vue';
 import * as _dayjs from 'dayjs';
 const dayjs = _dayjs;
 export default {
-    components: {
-        RecentTasks
-    },
-    data() {
-        return {
-          datos: dayjs().format('dddd, DD MMMM YYYY'), //variable para mostrar la fecha en el nav
-          nombresLista : [
-            {
-              name: "Agency landingpage",
-              description: "Agency landingpage",
-              status: "toDo",
-              date: "Nov 30 2021",
-            },
-            {
-              name: "Create website for...",
-              description: "Create website for...",
-              status: "toDo",
-              date: "Nov 30 2021"
-            },
-            {
-              name: "Create website for...",
-              description: "Create website for...",
-              status: "toDo",
-              date: "Nov 30 2021"
-            },
-            {
-              name: "Create website for...",
-              description: "Create website for...",
-              status: "onGoing",
-              date: "Nov 30 2021"
-            },
-            {
-              name: "Create website for...",
-              description: "Create website for...",
-              status: "finished",
-              date: "Nov 30 2021"
-            },
-          ],
-            taskName: '',
-            taskDescription: '',
-            dueDate: '',
-            taskStatus: '',
-          }
-      },
-      computed :{
-        filtertasksArray(){ // Función para mostrar las tres primeras tareas en Recent Tasks
-          return this.nombresLista.slice (0,3)
-        }
-      },
-
-      methods:{
-          formatStatus (status) { // Función para mostrar el string según el status
-            if (status === "onGoing") {
-              return 'On Going'
-            }
-            else if (status === "finished") {
-              return 'Finished'
-            }
-            else if (status === "toDo") {
-              return 'To Do'
-            }
-          },
-          mostrarForm: function () {
-            let dateFormat = dayjs(this.dueDate).format('MMM DD YYYY'); // Le da formato a la fecha de la tarea para la lista
-            let taskResume = {name: this.taskName, description: this.taskDescription, date: dateFormat, status: this.taskStatus} // Crea el objeto con la nueva tarea
-            
-            this.nombresLista.push(taskResume) // Lo añade a la array de tareas
-          }
-      },
-    name: 'CalendarComponent',
     setup() {
       const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"];
@@ -140,7 +69,6 @@ export default {
 
 <template>
   <!--Calendar-->
-  <div class="col-md-12 col-xl-5 container mt-5 px-4">
     <div class="row calendarContainer">
       <div class="col">
         <h4 class="text-center mb-3">
@@ -174,6 +102,28 @@ export default {
         </div>
       </div>
     </div>
-  </div>
   <!--/Calendar-->
 </template>
+
+<style scoped>
+/* Styles calendar */
+h4{
+  color: #fff;
+}
+.calendar-day {
+  height: 50px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #BDC5E0;
+}
+.calendar-header {
+  background-color: #f7f7f7;
+  padding: 2px 0;
+}
+.calendar-header .col, .calendar-day .col {
+  padding: 0;
+}
+/* / End Styles Calendar */
+</style>

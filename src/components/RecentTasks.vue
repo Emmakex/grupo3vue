@@ -15,7 +15,7 @@ export default {
 
 <template>
     <h2 class="text-white ms-3">Recent Task</h2>
-    <div class="col-xl-7 recent-task">
+    <div class="recent-task">
         <div v-for="(task, key) in array" class="tasks col-md-4">
             <div class="card">
                 <div class="card-body">
