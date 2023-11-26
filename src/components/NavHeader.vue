@@ -1,14 +1,21 @@
 <script>
+import { useUserStore } from '../stores/userStore'; // Importar useUserStore
 import * as _dayjs from 'dayjs';
 const dayjs = _dayjs;
 
-    export default{
-        data() {
-            return {
-            datos: dayjs().format('dddd, DD MMMM YYYY'), //variable para mostrar la fecha en el nav
-            }
+export default {
+    data() {
+        return {
+            datos: dayjs().format('dddd, DD MMMM YYYY'), // Fecha actual
+        };
+    },
+    computed: {
+        currentUser() {
+            const userStore = useUserStore();
+            return userStore.currentUser; // Devuelve el usuario actual
         }
     }
+}
 </script>
 
 <template>
@@ -28,14 +35,14 @@ const dayjs = _dayjs;
         data-bs-toggle="dropdown"
         aria-expanded="false"
     >
-        <img
+      <img
         src="/jacinta.jpg"
-        alt="hugenerd"
+        alt="user"
         width="30"
         height="30"
         class="rounded-circle"
-        />
-        <span class="d-none d-sm-inline mx-1">Jacinta</span>
+      />
+      <span class="d-none d-sm-inline mx-1">{{ currentUser ? currentUser.name : 'Guest' }}</span> <!-- Nombre de usuario dinámico -->
     </a>
     <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Action</a></li>

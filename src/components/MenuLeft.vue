@@ -40,7 +40,7 @@
                 <!-- /menu home -->
                 <!-- menu tasks -->
                 <li class="nav-item">
-                    <router-link to="/tasklist" class="nav-link px-0 align-middle">
+                    <router-link to="/taskslist" class="nav-link px-0 align-middle">
                     <span class="">
                         <svg
                         xmlns="http://www.w3.org/2000/svg"
