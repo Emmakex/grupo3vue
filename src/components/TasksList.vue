@@ -2,43 +2,31 @@
 export default {
     data() {
         return {
-          nombresLista : [
+          nombresLista: [
             {
               name: "Agency landingpage",
               description: "Agency landingpage",
               status: "toDo",
-              date: "Nov 30 2021",
-            },
-            {
-              name: "Create website for...",
-              description: "Create website for...",
-              status: "toDo",
-              date: "Nov 30 2021"
-            },
-            {
-              name: "Create website for...",
-              description: "Create website for...",
-              status: "toDo",
-              date: "Nov 30 2021"
+              date: new Date()
             },
             {
               name: "Create website for...",
               description: "Create website for...",
               status: "onGoing",
-              date: "Nov 30 2021"
+              date: new Date()
             },
             {
               name: "Create website for...",
               description: "Create website for...",
               status: "finished",
-              date: "Nov 30 2021"
+              date: new Date()
             },
           ],
-            taskName: '',
-            taskDescription: '',
-            dueDate: '',
-            taskStatus: '',
-          }
+          taskName: '',
+          taskDescription: '',
+          dueDate: '',
+          taskStatus: 'toDo',
+        }
       },
       computed :{
         filtertasksArray(){ // Función para mostrar las tres primeras tareas en Recent Tasks
@@ -58,6 +46,34 @@ export default {
               return 'To Do'
             }
           },
+          formatDate(date) {
+            if(date == null){ // Si el usuario no ingresó fecha, devolvemos 'Sin Fecha'
+              return 'Sin Fecha'
+            } else { // Si el usuario ingresó fecha, la convertimos a formato '30 nov 2023'
+              const options = {month: 'short', day: 'numeric', year: 'numeric' }
+
+              return date.toLocaleDateString("es-ES", options)
+            }
+          },
+          agregarTarea() { // Agrega la tarea a la colección y resetea el formulario
+            let date = null
+            
+            if(this.dueDate) { // si hay una fecha, la convertimos a tipo Date
+              date = new Date(this.dueDate)
+            }
+
+            this.nombresLista.push({
+              name: this.taskName,
+              description: this.taskDescription,
+              status: this.taskStatus,
+              date: date,
+            })
+
+            this.taskName = ''
+            this.taskDescription = ''
+            this.taskStatus = 'toDo'
+            this.dueDate = ''
+          }
       },
 }
 </script>
@@ -84,8 +100,27 @@ export default {
               <div class="col-3 col-xl-2" :class="task.status">
                 {{ formatStatus(task.status) }}
               </div>
-              <div class="col-3 col-xl-2">{{ task.date }}</div>
+              <div class="col-3 col-xl-2">{{ formatDate(task.date) }}</div>
             </li>
+            <li class="row text-white">
+              <div class="col-6 col-xl-4">
+                <input type="text" v-model="taskName" placeholder="Tarea" /> <!-- conectamos el input con variable -->
+              </div>
+              <div class="col-xl-4 text-start">
+                <input type="text" v-model="taskDescription" placeholder="Descripción" />
+              </div>
+              <div class="col-3 col-xl-2">
+                <select v-model="taskStatus">
+                  <option value="toDo">To Do</option>
+                  <option value="onGoing">On Going</option>
+                  <option value="finished">Finished</option>
+                </select>
+              </div>
+              <div class="col-3 col-xl-2">
+                <input type="date" v-model="dueDate" />
+              </div>
+            </li>
+            <button v-on:click="agregarTarea">Agregar</button>
           </ul>
         </div>
 </template>
