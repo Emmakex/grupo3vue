@@ -1,18 +1,33 @@
 <script>
 import { useUserStore } from '../stores/userStore'; // Importing the user store from Pinia
+import * as _dayjs from 'dayjs';
+const dayjs = _dayjs;
 
 export default {
-        props: {
-            array: Array,
+        data() {
+            return {
+                userStore: useUserStore()
+            }
         },
         methods: {
             formatStatus(status) {
+                if (status === "onGoing") {
+            return 'On Going'
+            }
+            else if (status === "finished") {
+            return 'Finished'
+            }
+            else if (status === "toDo") {
+            return 'To Do'
             }
         },
+        formatDate(date) {
+            return dayjs(date).format('DD MMM');
+        }
+        },
         mounted() {
-            const userStore = useUserStore();
-            userStore.fetchContacts()
-            console.log(userStore.contacts);
+            this.userStore.fetchTasks()
+            
         }
 };
 </script>
@@ -20,19 +35,19 @@ export default {
 <template>
     <h2 class="text-white ms-3">Recent Task</h2>
     <div class="recent-task">
-        <div v-for="(task, key) in array" class="tasks col-md-4">
+        <div v-for="(task, key) in userStore.filtertasksArray" class="tasks col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
                     </svg>
-                    <span class="ms-2">{{ task.email }}</span>
+                    <span class="ms-2">{{ formatDate(task.createdAt) }}</span>
                     </h5>
-                    <p class="card-text">{{ task.name }}</p>
+                    <p class="card-text">{{ task.text }}</p>
                 </div>
                 <div class="card-footer">
-                    <p :class="task.status">{{ formatStatus(task.phone) }}</p>
+                    <p :class="task.status">{{ formatStatus(task.completed) }}</p>
                 </div>
             </div>
         </div>
@@ -67,6 +82,16 @@ export default {
 }
 .card-footer {
     color: #ADB5CF;
+}
+
+.toDo {
+  color: #3FDDC0;
+}
+.onGoing {
+  color: #69A5FF;
+}
+.finished {
+  color: #FF84BF;
 }
 
 @media (min-width: 768px) {

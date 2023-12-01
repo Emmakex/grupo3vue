@@ -14,23 +14,6 @@ export default {
     NavHeader,
     MenuLeft,
   },
-  methods: {
-    getContacts() {
-      try {
-        fetch("https://contacts-api-yy1b.onrender.com/users/aleh/contacts")
-        .then((response) => response.json())
-        .then((data) => {
-            // console.log(data);
-            this.contacts = data;
-        });
-      } catch(error) {
-        console.log(error);
-      }
-    },
-  },
-  created() {
-    this.getContacts();
-  },
   setup() {
     const route = useRoute();
 

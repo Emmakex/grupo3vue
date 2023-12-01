@@ -4,7 +4,7 @@ export const useUserStore = defineStore('user', {
     state: () => ({
         users: [],
         currentUser: null, // Estado para el usuario actual
-        contacts: [] // Estado para el usuario actual
+        tasks: [] // Estado para el usuario actual
     }),
     actions: {
         registerUser(name, email, role, password) {
@@ -28,13 +28,18 @@ export const useUserStore = defineStore('user', {
         logoutUser() {
             this.currentUser = null; // Limpiar el usuario actual
         },
-        fetchContacts() {
-            fetch("https://contacts-api-yy1b.onrender.com/users/aleh/contacts")
+        fetchTasks() {
+            fetch(`https://todos-ddy8.onrender.com/users/sonia/todos`)
             .then((response) => response.json())
             .then((data) => {
-            // console.log(data);
-            this.contacts = data;
+            console.log(data);
+            this.tasks = data;
         });
+        }
+    },
+    getters: {
+        filtertasksArray(){ // Función para mostrar las tres primeras tareas en Recent Tasks
+            return this.tasks.slice (this.tasks.length -3)
         }
     }
 });

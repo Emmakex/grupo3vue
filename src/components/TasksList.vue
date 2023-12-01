@@ -1,40 +1,23 @@
 <script>
+import { useUserStore } from '../stores/userStore'; // Importing the user store from Pinia
+import * as _dayjs from 'dayjs';
+const dayjs = _dayjs;
+
 export default {
     data() {
         return {
-          nombresLista: [
-            {
-              name: "Agency landingpage",
-              description: "Agency landingpage",
-              status: "toDo",
-              date: new Date()
-            },
-            {
-              name: "Create website for...",
-              description: "Create website for...",
-              status: "onGoing",
-              date: new Date()
-            },
-            {
-              name: "Create website for...",
-              description: "Create website for...",
-              status: "finished",
-              date: new Date()
-            },
-          ],
+          userStore: useUserStore(),
           taskName: '',
           taskDescription: '',
           dueDate: '',
           taskStatus: 'toDo',
         }
       },
-      computed :{
-        filtertasksArray(){ // Función para mostrar las tres primeras tareas en Recent Tasks
-          return this.nombresLista.slice (0,3)
-        }
-      },
-
+      
       methods:{
+        formatDate2(date) {
+            return dayjs(date).format('DD MMM');
+        },
           formatStatus (status) { // Función para mostrar el string según el status
             if (status === "onGoing") {
               return 'On Going'
@@ -81,6 +64,10 @@ export default {
             this.nombresLista[id].status = 'finished'
           }
       },
+      mounted() {
+            this.userStore.fetchTasks()
+            
+        }
 }
 </script>
 
@@ -99,16 +86,16 @@ export default {
             </li>
             <!-- Recorre cada objeto de la colección nombresLista e imprime la tarea -->
             <li
-              v-for="(task, key) in nombresLista"
+              v-for="(task, key) in userStore.tasks"
               class="row text-white"
               :key="task"
             >
-              <div class="col-6 col-xl-3">{{ task.name }}</div>
+              <div class="col-6 col-xl-3">{{ task.text }}</div>
               <div class="col-xl-3 text-start">{{ task.description }}</div>
               <div class="col-3 col-xl-2" :class="task.status">
                 {{ formatStatus(task.status) }}
               </div>
-              <div class="col-3 col-xl-2">{{ formatDate(task.date) }}</div>
+              <div class="col-3 col-xl-2">{{ formatDate2(task.createdAt) }}</div>
               <div class="col-3 col-xl-2">
 
                 <!-- Si el estado es toDo muestra boton Start, indicando que comienza la tarea -->
