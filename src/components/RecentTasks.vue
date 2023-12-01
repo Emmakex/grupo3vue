@@ -1,4 +1,6 @@
 <script>
+import { useUserStore } from '../stores/userStore'; // Importing the user store from Pinia
+
 export default {
         props: {
             array: Array,
@@ -7,8 +9,10 @@ export default {
             formatStatus(status) {
             }
         },
-        onMounted() {
-            console.log(this.filtertasks);
+        mounted() {
+            const userStore = useUserStore();
+            userStore.fetchContacts()
+            console.log(userStore.contacts);
         }
 };
 </script>

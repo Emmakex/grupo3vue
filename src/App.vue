@@ -20,7 +20,7 @@ export default {
         fetch("https://contacts-api-yy1b.onrender.com/users/aleh/contacts")
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             this.contacts = data;
         });
       } catch(error) {

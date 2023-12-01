@@ -3,7 +3,8 @@ import { defineStore } from 'pinia';
 export const useUserStore = defineStore('user', {
     state: () => ({
         users: [],
-        currentUser: null // Estado para el usuario actual
+        currentUser: null, // Estado para el usuario actual
+        contacts: [] // Estado para el usuario actual
     }),
     actions: {
         registerUser(name, email, role, password) {
@@ -31,7 +32,7 @@ export const useUserStore = defineStore('user', {
             fetch("https://contacts-api-yy1b.onrender.com/users/aleh/contacts")
             .then((response) => response.json())
             .then((data) => {
-            console.log(data);
+            // console.log(data);
             this.contacts = data;
         });
         }
