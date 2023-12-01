@@ -1,4 +1,6 @@
 <script>
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 import NavHeader from './components/NavHeader.vue';
 import MenuLeft from './components/MenuLeft.vue';
 
@@ -6,30 +8,39 @@ export default {
   components: {
     NavHeader,
     MenuLeft,
-  }
-}
+  },
+  setup() {
+    const route = useRoute();
 
+    // Comprobar si la ruta actual es Login o Register
+    const isLoginOrRegister = computed(() => {
+      return route.path === '/' || route.path === '/register';
+    });
+
+    return { isLoginOrRegister };
+  }
+};
 </script>
 
 <template>
-  <header>
-    <NavHeader />
-  </header>
-  <main>
-    <div class="container row">
-      <!--section left -->
-      <section class="col-3 col-lg-2">
-        <MenuLeft />
-      </section>
-      <!-- /Section left -->
-      <!-- Section right -->
-      <section
-        class="col-9 col-lg-10 center-section row justify-content-center">
-        <router-view />
-      </section>
-      <!-- / Section right -->
-    </div>
-  </main>
+  <div>
+    <!-- Renderizar NavHeader y MenuLeft solo si la ruta no es Login o Register -->
+    <header v-if="!isLoginOrRegister">
+      <NavHeader />
+    </header>
+    <main>
+      <div class="container row">
+        <!-- Renderizar MenuLeft solo si la ruta no es Login o Register -->
+        <section class="col-3 col-lg-2" v-if="!isLoginOrRegister">
+          <MenuLeft />
+        </section>
+        <!-- Sección principal -->
+        <section class="col-9 col-lg-10 center">
+          <router-view />
+        </section>
+      </div>
+    </main>
+  </div>
 </template>
 
 <style scoped>
