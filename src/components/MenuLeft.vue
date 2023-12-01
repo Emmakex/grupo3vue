@@ -1,6 +1,10 @@
 <script>
     export default {
-
+        data() {
+            return {
+                activeRoute: 'home'
+            }
+        }
     }
 </script>
 
@@ -20,7 +24,7 @@
                 <!-- menu home -->
                 <li class="nav-item">
                     <router-link to="/" class="nav-link align-middle px-0">
-                    <span class="active">
+                    <span  class="active">
                         <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"

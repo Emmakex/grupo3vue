@@ -28,9 +28,6 @@ export default {
 
 <template>
   <div class="row align-items-center">
-    <div class="col-xl-2">
-      <img src="../../dist/assets/logoInicio-removebg-preview.png" alt="Icono inicio sesión">
-    </div>
     <div class="col-xl-10">
       <div class="notepaper">
         <h2>¡Hello!</h2>

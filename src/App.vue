@@ -1,13 +1,35 @@
 <script>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import NavHeader from './components/NavHeader.vue';
 import MenuLeft from './components/MenuLeft.vue';
 
 export default {
+  data() {
+    return {
+      contacts: [],
+    }
+  },
   components: {
     NavHeader,
     MenuLeft,
+  },
+  methods: {
+    getContacts() {
+      try {
+        fetch("https://contacts-api-yy1b.onrender.com/users/aleh/contacts")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            this.contacts = data;
+        });
+      } catch(error) {
+        console.log(error);
+      }
+    },
+  },
+  created() {
+    this.getContacts();
   },
   setup() {
     const route = useRoute();
@@ -18,7 +40,8 @@ export default {
     });
 
     return { isLoginOrRegister };
-  }
+  },
+  
 };
 </script>
 
