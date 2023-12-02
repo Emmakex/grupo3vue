@@ -41,7 +41,7 @@ export default {
             <input type="password" id="password" v-model="password" required class="form-control">
           </div>
           <button type="submit" class="btn btn-primary btn-block">Login</button>
-          <button type="button" @click="$router.push('/register')" class="btn btn-primary btn-block">Register</button>
+          <p class="q-register">Haven't you registered yet? <a @click="$router.push('/register')" class="register-link"> Register</a></p>
         </form>
       </div>
     </div>
@@ -58,7 +58,7 @@ img {
   }
 }
 .login-dark{
-  max-width:320px;
+  max-width:330px;
   width:90%;
   background-color:#262B3E;
   padding:40px;
@@ -82,12 +82,11 @@ img {
   background:#3261FF;
   border:none;
   border-radius:4px;
-  padding:11px;
+  padding:11px 75px;
   box-shadow:none;
   margin-top:26px;
   text-shadow:none;
   outline:none;
-  margin-right: 20px;
 }
 .login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
   background:#214a80;
@@ -120,6 +119,23 @@ img {
 }
 .mb-2{
   margin-top: 2em;
+}
+.q-register{
+  font-size: 0.9em;
+  color: #f4f4f4;
+  display: flex;
+  margin-top: 2em;
+}
+.register-link{
+  font-size: 0.9em;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  color: #fff;
+  margin-left: 0.2em;
+  font-style: oblique;
+  &:hover{
+    color: #3261FF;
+  }
 }
 </style>
 

@@ -59,7 +59,7 @@ img {
   }
 }
 .login-dark{
-  max-width:320px;
+  max-width:330px;
   width:90%;
   background-color:#262B3E;
   padding:40px;
@@ -83,7 +83,7 @@ img {
   background:#3261FF;
   border:none;
   border-radius:4px;
-  padding:11px;
+  padding:11px 75px;
   box-shadow:none;
   margin-top:26px;
   text-shadow:none;
