@@ -24,7 +24,7 @@ export default {
 <div class="container-fluid">
     <!-- logo -->
     <div class="logo ms-2">
-    <a class="navbar-brand" href="#">Logo</a>
+    <a class="navbar-brand" href="/home">Logo</a>
     </div>
     <div>
     <!-- menú de usuario -->
