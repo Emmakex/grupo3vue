@@ -13,7 +13,6 @@ export default {
         <div class="row flex-nowrap container-fluid">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
             <!-- menu -->
-            <span class="fs-5 d-none d-sm-inline">Menu</span>
             <div
                 class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
             >
@@ -75,7 +74,7 @@ export default {
                 <li class="nav-item">
                     <router-link to="/calendar" href="#" class="nav-link px-0 align-middle">
                     
-                        <span :class="{ 'active': $route.path === '/calendar' }"></span>
+                        <span :class="{ 'active': $route.path === '/calendar' }">
                         <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -91,7 +90,7 @@ export default {
                             d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
                         />
                         </svg>
-                    
+                    </span>
                     <span class="ms-1 d-none d-sm-inline">Calendar</span>
                     </router-link>
                 </li>
