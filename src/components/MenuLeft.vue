@@ -100,9 +100,6 @@ export default {
             </div>
             <!-- /menu -->
         </div>
-        <span :class="{ 'active': $route.path === '/home' }">Home</span>
-        <span :class="{ 'active': $route.path === '/taskslist' }">Tasks</span>
-        <span :class="{ 'active': $route.path === '/calendar' }">Calendar</span>
     </div>
 </template>
 
