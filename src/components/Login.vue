@@ -28,8 +28,9 @@ export default {
 
 <template>
   <div class="row align-items-center">
-    <div class="col-xl-10">
+    <div class="">
       <div class="notepaper">
+        <h1></h1>
         <h2>¡Hello!</h2>
         <form @submit.prevent="login">
           <div>

@@ -41,7 +41,11 @@ export default {
           <MenuLeft />
         </section>
         <!-- Sección principal -->
-        <section class="col-9 col-lg-10 center">
+        <section class="col-9 col-lg-10 center" v-if="!isLoginOrRegister">
+          <router-view />
+        </section>
+        <!-- Sección principal -->
+        <section class="center" v-if="isLoginOrRegister">
           <router-view />
         </section>
       </div>

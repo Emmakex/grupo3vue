@@ -24,7 +24,13 @@ export default {
 <div class="container-fluid">
     <!-- logo -->
     <div class="logo ms-2">
-    <a class="navbar-brand" href="/home">Logo</a>
+    <a class="navbar-brand" href="/home">
+        <img
+        src="/logo.svg"
+        alt="Go For It"
+        width="100"
+        />
+    </a>
     </div>
     <div>
     <!-- menú de usuario -->
@@ -144,6 +150,6 @@ padding: 1em;
 }
 .flexGrow0{
 flex-grow: 0;
-}
+} 
 /* /End styles header */
 </style>
