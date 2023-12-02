@@ -1,13 +1,13 @@
 <script>
 import RecentTasks from './RecentTasks.vue';
 import CalendarComponent from './CalendarComponent.vue';
-import TasksList from './TasksList.vue';
+import TasksHome from './TasksHome.vue';
 
 export default {
     components: {
     RecentTasks,
     CalendarComponent,
-    TasksList,
+    TasksHome,
 },
     data() {
         return {
@@ -35,7 +35,7 @@ export default {
       <CalendarComponent />
     </div>
   </div>
-    <TasksList />
+    <TasksHome />
 </template>
 
 <style scoped>

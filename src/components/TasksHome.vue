@@ -83,23 +83,6 @@ export default {
               <div class="col-3 col-xl-2">STATUS</div>
               <div class="col-3 col-xl-2">ACTIONS</div>
             </li>
-            <li class="row text-white">
-              <div class="col-6 col-xl-3">
-                <input type="text" v-model="taskName" placeholder="Task" /> <!-- conectamos el input con variable taskName -->
-              </div>
-              <div class="col-xl-3 text-start">
-                <input type="text" v-model="taskDescription" placeholder="Description" /> <!-- conectamos el input con variable taskDescription -->
-              </div>
-              <div class="col-3 col-xl-2">
-                <select v-model="taskStatus"> <!-- conectamos el select con variable taskStatus -->
-                  <option value="onGoing">On Going</option>
-                  <option value="finished">Finished</option>
-                </select>
-              </div>
-              <div class="col-xl-3">
-                <button v-on:click="agregarTarea">Add task</button>
-              </div>
-            </li>
             <!-- Recorre cada objeto de la colección nombresLista e imprime la tarea -->
             <li
               v-for="(task, key) in userStore.tasks"
@@ -112,9 +95,24 @@ export default {
                 {{ formatStatus(task.status) }}
               </div>
               <div class="col-3 col-xl-2">
+
+                <!-- Si el estado es toDo muestra boton Start, indicando que comienza la tarea -->
+                <button
+                  v-if="task.status == 'toDo'"
+                  v-on:click="startTask(key)"
+                >
+                  Start
+                </button>
+
+                <!-- Si el estado es onGoing muestra boton Finish, indicando que Finaliza la tarea -->
+                <button
+                  v-if="task.status == 'onGoing'"
+                  v-on:click="finishTask(key)"
+                >
+                Finish
+                </button>
               </div>
             </li>
-            
           </ul>
         </div>
 </template>
