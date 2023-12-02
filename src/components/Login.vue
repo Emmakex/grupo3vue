@@ -52,7 +52,6 @@ export default {
 img {
   width: 300px;
 }
-
 @media (min-width: 1201px) {
   img {
     width: 600px;
