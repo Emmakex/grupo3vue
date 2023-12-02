@@ -1,11 +1,11 @@
 <script>
-    export default {
-        data() {
-            return {
-                activeRoute: 'home'
-            }
+export default {
+    computed: {
+        activeRoute() {
+            return this.$route.path;  // Utiliza $route.path para obtener la ruta actual
         }
     }
+}
 </script>
 
 <template>
@@ -24,7 +24,7 @@
                 <!-- menu home -->
                 <li class="nav-item">
                     <router-link to="/home" class="nav-link align-middle px-0">
-                    <span  class="active">
+                        <span :class="{ 'active': $route.path === '/home' }">
                         <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -45,7 +45,7 @@
                 <!-- menu tasks -->
                 <li class="nav-item">
                     <router-link to="/taskslist" class="nav-link px-0 align-middle">
-                    <span class="">
+                        <span :class="{ 'active': $route.path === '/taskslist' }">
                         <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -73,12 +73,9 @@
                 <!-- /menu tasks -->
                 <!-- menu calendar -->
                 <li class="nav-item">
-                    <router-link
-                    to="/calendar"
-                    href="#"
-                    class="nav-link px-0 align-middle"
-                    >
-                    <span>
+                    <router-link to="/calendar" href="#" class="nav-link px-0 align-middle">
+                    
+                        <span :class="{ 'active': $route.path === '/calendar' }"></span>
                         <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
@@ -94,7 +91,7 @@
                             d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"
                         />
                         </svg>
-                    </span>
+                    
                     <span class="ms-1 d-none d-sm-inline">Calendar</span>
                     </router-link>
                 </li>
@@ -104,10 +101,13 @@
             </div>
             <!-- /menu -->
         </div>
+        <span :class="{ 'active': $route.path === '/home' }">Home</span>
+        <span :class="{ 'active': $route.path === '/taskslist' }">Tasks</span>
+        <span :class="{ 'active': $route.path === '/calendar' }">Calendar</span>
     </div>
 </template>
 
-<style scoped>
+<style>
 /* Styles left menu */
 .calendarContainer {
     max-width: none;
@@ -127,11 +127,10 @@ color: #9FA8C7;
 color: #9FA8C7;
 padding: 0.1rem 0.4rem 0.5rem;
 }
-.active {
-color: #fff !important;
-}
 span.active {
-background-color: #3360FF;
+    color: #fff; /* Texto blanco para el elemento activo */
+    background-color: #3360FF; /* Fondo azul para el elemento activo */
 }
+
   /* /End styles left menu  */
 </style>
