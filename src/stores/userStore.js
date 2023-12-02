@@ -40,6 +40,9 @@ export const useUserStore = defineStore('user', {
     getters: {
         filtertasksArray(){ // Función para mostrar las tres primeras tareas en Recent Tasks
             return this.tasks.slice (this.tasks.length -3)
+        },
+        filtertasksArray5(){ // Función para mostrar las tres primeras tareas en Recent Tasks
+            return this.tasks.slice (0, 5)
         }
     }
 });

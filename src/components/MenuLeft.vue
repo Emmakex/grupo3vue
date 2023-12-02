@@ -29,7 +29,7 @@ export default {
                         width="16"
                         height="16"
                         fill="currentColor"
-                        class="bi bi-house active"
+                        class="bi bi-house"
                         viewBox="0 0 16 16"
                         >
                         <path
@@ -37,7 +37,7 @@ export default {
                         />
                         </svg>
                     </span>
-                    <p class="ms-1 d-none d-sm-inline active">Home</p>
+                    <span class="ms-1 d-none d-sm-inline">Home</span>
                     </router-link>
                 </li>
                 <!-- /menu home -->
@@ -126,6 +126,11 @@ padding: 0.1rem 0.4rem 0.5rem;
 span.active {
     color: #fff; /* Texto blanco para el elemento activo */
     background-color: #3360FF; /* Fondo azul para el elemento activo */
+}
+
+span.active ~ span {
+    font-weight: bold;
+    color: #fff;
 }
 
   /* /End styles left menu  */
