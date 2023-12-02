@@ -33,32 +33,6 @@ export default {
     </a>
     </div>
     <div>
-    <!-- menú de usuario -->
-    <a
-        class="nav-link dropdown-toggle"
-        href="#"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-    >
-      <img
-        src="/jacinta.jpg"
-        alt="user"
-        width="30"
-        height="30"
-        class="rounded-circle"
-      />
-      <span class="d-none d-sm-inline mx-1">{{ currentUser ? currentUser.name : 'Guest' }}</span> <!-- Nombre de usuario dinámico -->
-    </a>
-    <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><hr class="dropdown-divider" /></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-    </ul>
-    </div>
-    <!-- menú hamburguesa -->
-    <div>
     <button
         class="navbar-toggler"
         type="button"
@@ -76,6 +50,17 @@ export default {
     id="navbarSupportedContent"
     >
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- menú de usuario -->
+        <li class="user-name my-auto">
+            <img
+            src="/jacinta.jpg"
+            alt="user"
+            width="30"
+            height="30"
+            class="rounded-circle"
+            />
+            <span class="d-none d-sm-inline mx-1">{{ currentUser ? currentUser.name : 'Guest' }}</span> <!-- Nombre de usuario dinámico -->
+        </li>
         <li class="nav-item date mx-5">
         {{ datos }}
         </li>
@@ -151,5 +136,14 @@ padding: 1em;
 .flexGrow0{
 flex-grow: 0;
 } 
+.user-name{
+    color: #fff;
+}
+@media (max-width: 992px) {
+  .user-name {
+    text-align: center;
+}
+}
+
 /* /End styles header */
 </style>
