@@ -46,7 +46,7 @@ export const useUserStore = defineStore('user', {
                         text: taskData.name,
                         description: taskData.description,
                         completed: taskData.status === 'finished',
-                        // Añadir tags si son necesarios
+                        // Se puede agregar tags si son necesarios
                     }),
                 });
 
@@ -70,7 +70,7 @@ export const useUserStore = defineStore('user', {
                         text: taskData.name,
                         description: taskData.description,
                         completed: taskData.status === 'finished',
-                        // Incluir tags si son necesarios
+                        // Se puede agregar tags si son necesarios
                     }),
                 });
 
@@ -85,6 +85,22 @@ export const useUserStore = defineStore('user', {
                 }
             } catch (error) {
                 console.error('Error al editar tarea:', error);
+            }
+        },
+        async deleteTask(taskId) {
+            try {
+                const response = await fetch(`https://todos-ddy8.onrender.com/users/sonia/todos/${taskId}`, {
+                    method: 'DELETE',
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Error al eliminar tarea');
+                }
+    
+                // Eliminar la tarea del estado local
+                this.tasks = this.tasks.filter(task => task.id !== taskId);
+            } catch (error) {
+                console.error('Error al eliminar tarea:', error);
             }
         },
     },
