@@ -20,7 +20,7 @@ export default {
 
 <template>
 <!-- navbar -->
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
 <div class="container-fluid">
     <!-- logo -->
     <div class="logo ms-2">

@@ -18,7 +18,7 @@ export default {
           }
       },
       methods:{
-        addTasks(){ 
+        addTasks(){
           const newTask = {taskName, taskDescription, dueDate, taskStatus}
           this.nombresLista.push(newTask)
         }
@@ -28,10 +28,10 @@ export default {
 
 <template>
   <div class="d-flex">
-    <div class="col-xl-7 mt-5">
+    <div class="col-xl-7">
       <RecentTasks />
     </div>
-    <div class="col-xl-4 mt-5 px-4">
+    <div class="col-xl-4 px-4 d-none-mobile">
       <CalendarComponent />
     </div>
   </div>
@@ -39,5 +39,9 @@ export default {
 </template>
 
 <style scoped>
-
+@media (max-width: 1280px) {
+  .d-none-mobile{
+    display: none;
+  }
+}
 </style>

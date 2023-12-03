@@ -24,7 +24,7 @@ export default {
 
     return { isLoginOrRegister };
   },
-  
+
 };
 </script>
 
@@ -41,7 +41,7 @@ export default {
           <MenuLeft />
         </section>
         <!-- Sección principal -->
-        <section class="col-9 col-lg-10 center" v-if="!isLoginOrRegister">
+        <section class="col-9 col-lg-10 center container-pt" v-if="!isLoginOrRegister">
           <router-view />
         </section>
         <!-- Sección principal -->
@@ -56,5 +56,8 @@ export default {
 <style scoped>
   .container {
     max-width: inherit;
+  }
+  .container-pt{
+    padding-top: calc(80px + 2em);
   }
 </style>

@@ -56,7 +56,7 @@ export default {
               <div class="col-3 col-xl-2">
 
                 <!-- Si el estado es on going muestra boton Start, indicando que comienza la tarea -->
-                <button
+                <button class="btn-primary-list"
                   v-if="!task.completed"
                   >
                   <!-- esta opción se añadirá cuando se pueda editar la tarea y enlazarla con la api -->
@@ -91,7 +91,21 @@ li.row {
 .text-start {
   display: none;
 }
-
+.btn-primary-list {
+  background:#3261FF;
+  color: #fff;
+  border:none;
+  border-radius:4px;
+  padding:11px 20px;
+  box-shadow:none;
+  text-shadow:none;
+  outline:none;
+}
+.btn-primary-list:hover, .btn-primary-list:active {
+  background:#214a80;
+  color: #fff;
+  outline:none;
+}
 @media (min-width: 1201px) {
   .text-start {
     display: block;

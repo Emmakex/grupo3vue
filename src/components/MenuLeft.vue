@@ -110,18 +110,20 @@ export default {
     --bs-gutter-x: 0;
 }
 .menu-left {
-background-color: #1C1E2D;
+    background-color: #1C1E2D;
+    padding-top: calc(70px + 2em);
+    position:fixed;
 }
 .menu-left li {
-width: max-content;
+    width: max-content;
 }
 .menu-left .nav-link {
-display: inline-block;
-color: #9FA8C7;
+    display: inline-block;
+    color: #9FA8C7;
 }
 .menu-left span {
-color: #9FA8C7;
-padding: 0.1rem 0.4rem 0.5rem;
+    color: #9FA8C7;
+    padding: 0.1rem 0.4rem 0.5rem;
 }
 span.active {
     color: #fff; /* Texto blanco para el elemento activo */
