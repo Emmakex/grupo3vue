@@ -1,5 +1,5 @@
 <script>
-import { useUserStore } from '../stores/userStore'; // Importing the user store from Pinia
+import { useUserStore } from '../stores/userStore'; // Importando el store de usuarios de Pinia
 import * as _dayjs from 'dayjs';
 const dayjs = _dayjs;
 
@@ -12,46 +12,43 @@ export default {
           dueDate: '',
           taskStatus: 'toDo',
         }
-      },
-      
-      methods:{
+    },
+    
+    methods:{
         formatDate2(date) {
             return dayjs(date).format('DD MMM');
         },
-        formatStatus (status) { // Función para mostrar el string según el status
-          if (!status) {
-            return 'On Going'
-          }
-          else {
-            return 'Finished'
-          }
-        },
-          agregarTarea() { // Agrega la tarea a la colección y resetea el formulario
-            let date = null
-
-            if(this.dueDate) { // si hay una fecha, la convertimos a tipo Date
-              date = new Date(this.dueDate)
+        formatStatus(status) { // Función para mostrar el string según el status
+            if (!status) {
+                return 'On Going'
+            } else {
+                return 'Finished'
             }
+        },
+        agregarTarea() { // Método actualizado para agregar la tarea
+            let date = this.dueDate ? new Date(this.dueDate) : null;
 
-            this.nombresLista.push({
-              name: this.taskName,
-              description: this.taskDescription,
-              status: this.taskStatus,
-              date: date,
-            })
+            // Llamada a la acción del store para agregar la tarea
+            this.userStore.addTask({
+                name: this.taskName,
+                description: this.taskDescription,
+                status: this.taskStatus,
+                date: date,
+            });
 
-            this.taskName = ''
-            this.taskDescription = ''
-            this.taskStatus = 'toDo'
-            this.dueDate = ''
-          },
-      },
-      mounted() {
-            this.userStore.fetchTasks()
-            
-        }
+            // Restablecer los campos del formulario
+            this.taskName = '';
+            this.taskDescription = '';
+            this.taskStatus = 'toDo';
+            this.dueDate = '';
+        },
+    },
+    mounted() {
+        this.userStore.fetchTasks()
+    }
 }
 </script>
+
 
 <template>
     <div class=" col-xl-10 task-menu">
