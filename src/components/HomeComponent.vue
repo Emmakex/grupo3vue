@@ -28,10 +28,10 @@ export default {
 
 <template>
   <div class="d-flex">
-    <div class="col-xl-7">
+    <div class="col-xxl-7 col-xl-8 col-lg-12">
       <RecentTasks />
     </div>
-    <div class="col-xl-4 px-4 d-none-mobile">
+    <div class="col-xxl-5 col-xl-4 d-none-mobile">
       <CalendarComponent />
     </div>
   </div>
@@ -39,7 +39,7 @@ export default {
 </template>
 
 <style scoped>
-@media (max-width: 1280px) {
+@media (max-width: 1199px) {
   .d-none-mobile{
     display: none;
   }
