@@ -41,32 +41,59 @@ export const useUserStore = defineStore('user', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                text: taskData.name,
-                description: taskData.description,
-                completed: taskData.status === 'finished', // Falta arreglar para ver o editar el estado
-                tags: taskData.tags // Falta arreglar para que se una todo
-            }),
-        });
+                    },
+                    body: JSON.stringify({
+                        text: taskData.name,
+                        description: taskData.description,
+                        completed: taskData.status === 'finished',
+                        // Añadir tags si son necesarios
+                    }),
+                });
+
                 if (!response.ok) {
                     throw new Error('Error al agregar tarea');
                 }
                 const nuevaTarea = await response.json();
-
-                // Agrega la tarea al estado local
                 this.tasks.push(nuevaTarea);
             } catch (error) {
                 console.error('Error al agregar tarea:', error);
             }
         },
+        async editTask(taskData) {
+            try {
+                const response = await fetch(`https://todos-ddy8.onrender.com/users/sonia/todos/${taskData.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text: taskData.name,
+                        description: taskData.description,
+                        completed: taskData.status === 'finished',
+                        // Incluir tags si son necesarios
+                    }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al editar tarea');
+                }
+
+                const tareaEditada = await response.json();
+                const index = this.tasks.findIndex(t => t.id === tareaEditada.id);
+                if (index !== -1) {
+                    this.tasks[index] = tareaEditada;
+                }
+            } catch (error) {
+                console.error('Error al editar tarea:', error);
+            }
+        },
     },
     getters: {
         filtertasksArray() {
-            return this.tasks.slice(this.tasks.length - 3)
+            return this.tasks.slice(this.tasks.length - 3);
         },
         filtertasksArray5() {
-            return this.tasks.slice(0, 5)
+            return this.tasks.slice(0, 5);
         }
     }
 });

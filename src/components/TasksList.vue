@@ -6,16 +6,18 @@ const dayjs = _dayjs;
 export default {
     data() {
         return {
-          userStore: useUserStore(),
-          taskName: '',
-          taskDescription: '',
-          dueDate: '',
-          taskStatus: 'toDo',
+            userStore: useUserStore(),
+            taskName: '',
+            taskDescription: '',
+            dueDate: '',
+            taskStatus: 'onGoing',
+            editingTaskId: null, // Nuevo estado para mantener el ID de la tarea que se está editando
+            isEditing: false, // Nuevo estado para saber si estamos en modo de edición
         }
     },
     
     methods:{
-        formatDate2(date) {
+      formatDate2(date) {
             return dayjs(date).format('DD MMM');
         },
         formatStatus(status) { // Función para mostrar el string según el status
@@ -25,29 +27,50 @@ export default {
                 return 'Finished'
             }
         },
-        agregarTarea() { // Método actualizado para agregar la tarea
+
+        iniciarEdicion(task) {
+            this.taskName = task.text;
+            this.taskDescription = task.description;
+            this.taskStatus = task.completed ? 'finished' : 'onGoing';
+            this.dueDate = task.dueDate; // Asegúrate de que esté en el formato adecuado
+            this.editingTaskId = task.id; // Guarda el ID de la tarea a editar
+            this.isEditing = true;
+        },
+
+        agregarOEditarTarea() {
             let date = this.dueDate ? new Date(this.dueDate) : null;
 
-            // Llamada a la acción del store para agregar la tarea
-            this.userStore.addTask({
+            const taskData = {
                 name: this.taskName,
                 description: this.taskDescription,
-                status: this.taskStatus,
+                status: this.taskStatus === 'finished',
                 date: date,
-            });
+            };
 
-            // Restablecer los campos del formulario
+            if (this.isEditing) {
+                // Llama a la acción del store para editar la tarea
+                this.userStore.editTask({ ...taskData, id: this.editingTaskId });
+                this.isEditing = false; // Salir del modo de edición
+            } else {
+                // Llama a la acción del store para agregar la tarea
+                this.userStore.addTask(taskData);
+            }
+
+            // Restablecer el formulario
             this.taskName = '';
             this.taskDescription = '';
-            this.taskStatus = 'toDo';
+            this.taskStatus = 'onGoing';
             this.dueDate = '';
+            this.editingTaskId = null;
         },
     },
+
     mounted() {
-        this.userStore.fetchTasks()
+        this.userStore.fetchTasks();
     }
 }
 </script>
+
 
 
 <template>
@@ -81,9 +104,9 @@ export default {
             </li>
             <!-- Recorre cada objeto de la colección nombresLista e imprime la tarea -->
             <li
-              v-for="(task, key) in userStore.tasks"
-              class="row text-white"
-              :key="task"
+              v-for="task in userStore.tasks"
+              class="row text-white task-item" 
+              :key="task.id" 
             >
               <div class="col-6 col-xl-3">{{ task.text }}</div>
               <div class="col-xl-3 text-start">{{ task.description }}</div>
@@ -91,7 +114,7 @@ export default {
                 {{ formatStatus(task.completed) }}
               </div>
               <div class="col-3 col-xl-2">
-                <svg 
+                <svg @click="iniciarEdicion(task)"
                 xmlns="http://www.w3.org/2000/svg" 
                 width="16" height="16" 
                 fill="currentColor" 
@@ -108,6 +131,17 @@ export default {
                   <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
                 </svg>
               </div>
+            <!-- Formulario de Edición -->
+            <div v-if="editingTaskId === task.id" class="edit-form">
+            <input type="text" v-model="taskName" placeholder="Task Name" />
+            <input type="text" v-model="taskDescription" placeholder="Description" />
+            <select v-model="taskStatus">
+                <option value="onGoing">On Going</option>
+                <option value="finished">Finished</option>
+            </select>
+            <!-- Añade otros campos si son necesarios -->
+            <button @click="agregarOEditarTarea">Edit</button>
+        </div>
             </li>
             
           </ul>
