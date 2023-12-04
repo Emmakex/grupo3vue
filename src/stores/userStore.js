@@ -45,7 +45,7 @@ export const useUserStore = defineStore('user', {
                     body: JSON.stringify({
                         text: taskData.name,
                         description: taskData.description,
-                        completed: taskData.status === 'finished',
+                        completed: taskData.status,
                         // Se puede agregar tags si son necesarios
                     }),
                 });
@@ -69,7 +69,7 @@ export const useUserStore = defineStore('user', {
                     body: JSON.stringify({
                         text: taskData.name,
                         description: taskData.description,
-                        completed: taskData.status === 'finished',
+                        completed: taskData.status,
                         // Se puede agregar tags si son necesarios
                     }),
                 });

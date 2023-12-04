@@ -10,11 +10,10 @@ export default {
             taskName: '',
             taskDescription: '',
             dueDate: '',
-            taskStatus: 'onGoing',
+            taskStatus: false,
             taskNameEdit: '',
             taskDescriptionEdit: '',
-            dueDateEdit: '',
-            taskStatusEdit: 'onGoing',
+            taskStatusEdit: false,
             editingTaskId: null, // Nuevo estado para mantener el ID de la tarea que se está editando
             isEditing: false, // Nuevo estado para saber si estamos en modo de edición
         }
@@ -36,7 +35,7 @@ export default {
             this.taskNameEdit = task.text;
             this.taskDescriptionEdit = task.description;
             this.taskStatusEdit = task.completed ? 'finished' : 'onGoing';
-            this.dueDateEdit = task.dueDate; // Asegúrate de que esté en el formato adecuado
+            this.dueDate = task.dueDate; // Asegúrate de que esté en el formato adecuado
             this.editingTaskId = task.id; // Guarda el ID de la tarea a editar
             this.isEditing = true;
         },
@@ -49,7 +48,7 @@ export default {
               const taskData = {
                   name: this.taskNameEdit,
                   description: this.taskDescriptionEdit,
-                  status: this.taskStatusEdit === 'finished',
+                  status: this.taskStatusEdit === 'finished' ? true : false,
                   date: date,
               };
                 // Llama a la acción del store para editar la tarea
@@ -59,7 +58,7 @@ export default {
               const taskData = {
                   name: this.taskName,
                   description: this.taskDescription,
-                  status: this.taskStatus === 'finished',
+                  status: this.taskStatus === 'finished' ? true : false,
                   date: date,
               };
                 // Llama a la acción del store para agregar la tarea
@@ -69,7 +68,10 @@ export default {
             // Restablecer el formulario
             this.taskName = '';
             this.taskDescription = '';
-            this.taskStatus = 'onGoing';
+            this.taskStatus = false;
+            this.taskNameEdit = '';
+            this.taskDescriptionEdit = '';
+            this.taskStatusEdit = false;
             this.dueDate = '';
             this.editingTaskId = null;
         },
@@ -109,7 +111,7 @@ export default {
         </div>
         <div class="col-3 col-xl-2">
           <select class="select-primary-list" v-model="taskStatus"> <!-- conectamos el select con variable taskStatus -->
-            <option value="onGoing">On Going</option>
+            <option value="onGoing" selected>On Going</option>
             <option value="finished">Finished</option>
           </select>
         </div>
