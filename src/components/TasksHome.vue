@@ -22,6 +22,19 @@ export default {
             return 'Finished'
           }
         },
+        editStatus(task) {
+            let date = this.dueDate ? new Date(this.dueDate) : null;
+            if(!task.completed) {
+              const taskData = {
+                    name: task.text,
+                    description: task.description,
+                    status: true,
+                    date: date,
+                };
+                this.userStore.editTask({ ...taskData, id: task.id })
+            }
+        },
+
       },
       mounted() {
             this.userStore.fetchTasks()
@@ -56,7 +69,7 @@ export default {
               <div class="col-3 col-xl-2">
 
                 <!-- Si el estado es on going muestra boton Start, indicando que comienza la tarea -->
-                <button class="btn-primary-list"
+                <button @click="editStatus(task)" class="btn-primary-list"
                   v-if="!task.completed"
                   >
                   <!-- esta opción se añadirá cuando se pueda editar la tarea y enlazarla con la api -->
