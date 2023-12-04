@@ -11,6 +11,10 @@ export default {
             taskDescription: '',
             dueDate: '',
             taskStatus: 'onGoing',
+            taskNameEdit: '',
+            taskDescriptionEdit: '',
+            dueDateEdit: '',
+            taskStatusEdit: 'onGoing',
             editingTaskId: null, // Nuevo estado para mantener el ID de la tarea que se está editando
             isEditing: false, // Nuevo estado para saber si estamos en modo de edición
         }
@@ -29,10 +33,10 @@ export default {
         },
 
         iniciarEdicion(task) {
-            this.taskName = task.text;
-            this.taskDescription = task.description;
-            this.taskStatus = task.completed ? 'finished' : 'onGoing';
-            this.dueDate = task.dueDate; // Asegúrate de que esté en el formato adecuado
+            this.taskNameEdit = task.text;
+            this.taskDescriptionEdit = task.description;
+            this.taskStatusEdit = task.completed ? 'finished' : 'onGoing';
+            this.dueDateEdit = task.dueDate; // Asegúrate de que esté en el formato adecuado
             this.editingTaskId = task.id; // Guarda el ID de la tarea a editar
             this.isEditing = true;
         },
@@ -40,18 +44,24 @@ export default {
         agregarOEditarTarea() {
             let date = this.dueDate ? new Date(this.dueDate) : null;
 
-            const taskData = {
-                name: this.taskName,
-                description: this.taskDescription,
-                status: this.taskStatus === 'finished',
-                date: date,
-            };
-
+            
             if (this.isEditing) {
+              const taskData = {
+                  name: this.taskNameEdit,
+                  description: this.taskDescriptionEdit,
+                  status: this.taskStatusEdit === 'finished',
+                  date: date,
+              };
                 // Llama a la acción del store para editar la tarea
                 this.userStore.editTask({ ...taskData, id: this.editingTaskId });
                 this.isEditing = false; // Salir del modo de edición
             } else {
+              const taskData = {
+                  name: this.taskName,
+                  description: this.taskDescription,
+                  status: this.taskStatus === 'finished',
+                  date: date,
+              };
                 // Llama a la acción del store para agregar la tarea
                 this.userStore.addTask(taskData);
             }
@@ -139,13 +149,13 @@ export default {
         <!-- Formulario de Edición -->
         <div v-if="editingTaskId === task.id" class="edit-form row mt-4">
           <div class="col-6 col-xl-3">
-            <input type="text" v-model="taskName" placeholder="Task Name" />
+            <input type="text" v-model="taskNameEdit" placeholder="Task Name" />
           </div>
           <div class="col-xl-3 text-start">
-            <input type="text" v-model="taskDescription" placeholder="Description" />
+            <textarea cols="25" rows="5" v-model="taskDescriptionEdit" placeholder="Description"></textarea>
           </div>
           <div class="col-3 col-xl-2">
-            <select class="select-primary-list" v-model="taskStatus">
+            <select class="select-primary-list" v-model="taskStatusEdit">
                 <option value="onGoing">On Going</option>
                 <option value="finished">Finished</option>
             </select>
@@ -182,7 +192,7 @@ li.row {
 .text-start {
   display: none;
 }
-input{
+input, textarea{
   border: 3px solid #3261FF;
   border-radius:4px;
   padding:11px 5px;
