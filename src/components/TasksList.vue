@@ -76,6 +76,23 @@ export default {
             this.dueDate = '';
             this.editingTaskId = null;
         },
+        
+        iniciarEdicion(task) {
+    if (this.editingTaskId === task.id && this.isEditing) {
+        // Si la tarea ya está en edición, oculta el formulario
+        this.isEditing = false;
+        this.editingTaskId = null;
+    } else {
+        // Si no, muestra el formulario con los datos de la tarea seleccionada
+        this.taskNameEdit = task.text;
+        this.taskDescriptionEdit = task.description;
+        this.taskStatusEdit = task.completed ? 'finished' : 'onGoing';
+        this.dueDate = task.dueDate;
+        this.editingTaskId = task.id;
+        this.isEditing = true;
+    }
+},
+
         // Función para eliminar tarea
         eliminarTarea(taskId) {
         this.userStore.deleteTask(taskId);
