@@ -10,10 +10,10 @@ export default {
             taskName: '',
             taskDescription: '',
             dueDate: '',
-            taskStatus: false,
+            taskStatus: 'onGoing',
             taskNameEdit: '',
             taskDescriptionEdit: '',
-            taskStatusEdit: false,
+            taskStatusEdit: 'onGoing',
             editingTaskId: null, // Nuevo estado para mantener el ID de la tarea que se está editando
             isEditing: false, // Nuevo estado para saber si estamos en modo de edición
         }
@@ -69,10 +69,10 @@ export default {
             // Restablecer el formulario
             this.taskName = '';
             this.taskDescription = '';
-            this.taskStatus = false;
+            this.taskStatus = 'onGoing';
             this.taskNameEdit = '';
             this.taskDescriptionEdit = '';
-            this.taskStatusEdit = false;
+            this.taskStatusEdit = 'onGoing';
             this.dueDate = '';
             this.editingTaskId = null;
         },
@@ -111,7 +111,7 @@ export default {
         </div>
         <div class="col-3 col-xl-2">
           <select class="select-primary-list" v-model="taskStatus"> <!-- conectamos el select con variable taskStatus -->
-            <option value="onGoing" selected>On Going</option>
+            <option value="onGoing">On Going</option>
             <option value="finished">Finished</option>
           </select>
         </div>

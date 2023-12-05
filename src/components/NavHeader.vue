@@ -12,7 +12,7 @@ export default {
     computed: {
         currentUser() {
             const userStore = useUserStore();
-            return userStore.currentUser; // Devuelve el usuario actual
+            return userStore.users[0]; // Devuelve el usuario actual
         }
     }
 }
