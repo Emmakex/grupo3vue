@@ -7,11 +7,13 @@ export const useUserStore = defineStore('user', {
         tasks: [] // Estado para las tareas
     }),
     actions: {
+        // función para registrar usuario
         registerUser(name, email, role, password) {
-            this.users.push({ name, email, role, password });
+            this.users.push({ name, email, role, password }); // guarda en el array users el nuevo objeto
         },
-        loginUser(email, password) {
-            const user = this.users.find(user => user.email === email && user.password === password);
+        // Función para loguear
+        loginUser(email, password) { // Recibe por párametro el email y el password
+            const user = this.users.find(user => user.email === email && user.password === password); // Si coincide el usuario y el password con el guardado
             if (user) {
                 this.currentUser = user; // Establecer el usuario actual
                 return true;
@@ -28,6 +30,7 @@ export const useUserStore = defineStore('user', {
         logoutUser() {
             this.currentUser = null; // Limpiar el usuario actual
         },
+        // Llamada a la API
         fetchTasks() {
             fetch(`https://todos-ddy8.onrender.com/users/sonia/todos`)
             .then((response) => response.json())
@@ -35,8 +38,9 @@ export const useUserStore = defineStore('user', {
                 this.tasks = data;
             });
         },
-        async addTask(taskData) {
-            try {
+        // Función para añadir tarea nueva
+        async addTask(taskData) { // recibe por parámetro el objeto con la nueva tarea
+            try { // Llama a la API para pasarle la nueva tarea
                 const response = await fetch('https://todos-ddy8.onrender.com/users/sonia/todos', {
                     method: 'POST',
                     headers: {
@@ -46,7 +50,6 @@ export const useUserStore = defineStore('user', {
                         text: taskData.name,
                         description: taskData.description,
                         completed: taskData.status,
-                        // Se puede agregar tags si son necesarios
                     }),
                 });
 
@@ -59,8 +62,10 @@ export const useUserStore = defineStore('user', {
                 console.error('Error al agregar tarea:', error);
             }
         },
-        async editTask(taskData) {
+        // Función para editar tarea
+        async editTask(taskData) { // Se llama a la función pasando los nuevos párametros
             try {
+                // Llamada a la API con el id de la tarea a editar
                 const response = await fetch(`https://todos-ddy8.onrender.com/users/sonia/todos/${taskData.id}`, {
                     method: 'PATCH',
                     headers: {
@@ -87,8 +92,10 @@ export const useUserStore = defineStore('user', {
                 console.error('Error al editar tarea:', error);
             }
         },
-        async deleteTask(taskId) {
+        // Función patra eliminar tarea
+        async deleteTask(taskId) { // Se le pasa el id de la tarea a eliminar
             try {
+                // Se llama a la API con el id pasado para eliminar la tarea
                 const response = await fetch(`https://todos-ddy8.onrender.com/users/sonia/todos/${taskId}`, {
                     method: 'DELETE',
                 });
@@ -105,9 +112,11 @@ export const useUserStore = defineStore('user', {
         },
     },
     getters: {
+        // Función para filtrar el array de tareas y coger las tre últimas y mostrarlo en recent tasks
         filtertasksArray() {
             return this.tasks.slice(this.tasks.length - 3);
         },
+        //  Función para filtrar el array de tareas y coger las 5 primeras para mostrar en home
         filtertasksArray5() {
             return this.tasks.slice(0, 5);
         }

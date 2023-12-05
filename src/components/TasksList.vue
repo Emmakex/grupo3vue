@@ -20,6 +20,7 @@ export default {
     },
     
     methods:{
+      // Función para el formato de fecha
       formatDate2(date) {
             return dayjs(date).format('DD MMM');
         },
@@ -30,33 +31,33 @@ export default {
                 return 'Finished'
             }
         },
-
+        // Función para poder editar tarea, rellena los campos del formulario con los que tiene la tarea
         iniciarEdicion(task) {
             this.taskNameEdit = task.text;
             this.taskDescriptionEdit = task.description;
             this.taskStatusEdit = task.completed ? 'finished' : 'onGoing';
-            this.dueDate = task.dueDate; // Asegúrate de que esté en el formato adecuado
+            this.dueDate = task.dueDate; 
             this.editingTaskId = task.id; // Guarda el ID de la tarea a editar
             this.isEditing = true;
         },
-
+        // Función para agregar o editar tarea
         agregarOEditarTarea() {
             let date = this.dueDate ? new Date(this.dueDate) : null;
 
             
-            if (this.isEditing) {
-              const taskData = {
+            if (this.isEditing) { // Si está en modo edición...
+              const taskData = { // Creará el objeto con los nuevos datos...
                   name: this.taskNameEdit,
                   description: this.taskDescriptionEdit,
                   status: this.taskStatusEdit === 'finished' ? true : false,
                   date: date,
               };
-                // Llama a la acción del store para editar la tarea
+                // ... Llama a la acción del store para editar la tarea pasando el objeto con los nuevos valores
                 this.userStore.editTask({ ...taskData, id: this.editingTaskId });
                 this.isEditing = false; // Salir del modo de edición
-            } else {
+            } else { // Si no...
               const taskData = {
-                  name: this.taskName,
+                  name: this.taskName, 
                   description: this.taskDescription,
                   status: this.taskStatus === 'finished' ? true : false,
                   date: date,
@@ -75,12 +76,11 @@ export default {
             this.dueDate = '';
             this.editingTaskId = null;
         },
-
+        // Función para eliminar tarea
         eliminarTarea(taskId) {
         this.userStore.deleteTask(taskId);
     },
     },
-
     mounted() {
         this.userStore.fetchTasks();
     }

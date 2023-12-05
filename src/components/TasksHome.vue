@@ -6,7 +6,7 @@ const dayjs = _dayjs;
 export default {
     data() {
         return {
-          userStore: useUserStore(),
+          userStore: useUserStore(), // Llamada a userStore
         }
       },
       
@@ -22,22 +22,22 @@ export default {
             return 'Finished'
           }
         },
-        editStatus(task) {
+        editStatus(task) { // Función para editar el status y poder cambiar de on going a finished desde la pantalla home
             let date = this.dueDate ? new Date(this.dueDate) : null;
-            if(!task.completed) {
-              const taskData = {
+            if(!task.completed) { // Si no está completada...
+              const taskData = { // Guardamos los valores de text y description y cambiamos el status a true (finished)
                     name: task.text,
                     description: task.description,
                     status: true,
                     date: date,
                 };
-                this.userStore.editTask({ ...taskData, id: task.id })
+                this.userStore.editTask({ ...taskData, id: task.id }) // Invocamos la función de editTask en userStore pasándole los datos nuevos y la id de la tarea
             }
         },
 
       },
       mounted() {
-            this.userStore.fetchTasks()
+            this.userStore.fetchTasks() // Llamada a la API desde userStore
             
         }
 }
@@ -68,11 +68,10 @@ export default {
               </div>
               <div class="col-3 col-xl-2">
 
-                <!-- Si el estado es on going muestra boton Start, indicando que comienza la tarea -->
+                <!-- Si el estado es on going muestra boton end task, al clickar se invoca a la función pasánsole el parámetro de task -->
                 <button @click="editStatus(task)" class="btn-primary-list"
                   v-if="!task.completed"
                   >
-                  <!-- esta opción se añadirá cuando se pueda editar la tarea y enlazarla con la api -->
                   End Task
               </button>
               </div>

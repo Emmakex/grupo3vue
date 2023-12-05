@@ -1,28 +1,16 @@
 <script>
+// Importamos los componentes
 import RecentTasks from './RecentTasks.vue';
 import CalendarComponent from './CalendarComponent.vue';
 import TasksHome from './TasksHome.vue';
 
 export default {
     components: {
-    RecentTasks,
-    CalendarComponent,
-    TasksHome,
-},
-    data() {
-        return {
-            taskName: '',
-            taskDescription: '',
-            dueDate: '',
-            taskStatus: '',
-          }
-      },
-      methods:{
-        addTasks(){
-          const newTask = {taskName, taskDescription, dueDate, taskStatus}
-          this.nombresLista.push(newTask)
-        }
-      }
+      // agregamos los componentes que hemos importado y llamaremos en el template
+      RecentTasks,
+      CalendarComponent,
+      TasksHome,
+  },
 }
 </script>
 

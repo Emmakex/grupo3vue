@@ -13,9 +13,9 @@ export default {
     },
     methods: {
         register() {
-            const userStore = useUserStore();
-            userStore.registerUser(this.name, this.email, this.role, this.password);
-            // Redirect to login page after registration
+            const userStore = useUserStore(); // Llamada a userStore
+            userStore.registerUser(this.name, this.email, this.role, this.password); // Invoca la función de registro pasando los datos introducidos por el usuario
+            // Redirige a login después del registro
             this.$router.push('/');
         }
     }

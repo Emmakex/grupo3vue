@@ -1,3 +1,4 @@
+// Importamos los componentes
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeComponent from '../components/HomeComponent.vue'
 import Login from '../components/Login.vue'
@@ -5,6 +6,7 @@ import Register from '../components/Register.vue';
 import TasksList from '../components/TasksList.vue';
 import CalendarComponent from '../components/CalendarComponent.vue';
 
+// Constante para guardar las rutas
 const routes = [
     { path: '/', component: Login },
     { path: '/home', component: HomeComponent, meta: { requiresAuth: true }},

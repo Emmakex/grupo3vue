@@ -6,27 +6,24 @@ const dayjs = _dayjs;
 export default {
         data() {
             return {
-                userStore: useUserStore()
+                userStore: useUserStore() // Llamamos a la función de userStore
             }
         },
         methods: {
+            // Función para mostrar el texto del estado de la tarea
             formatStatus(status) {
-                if (status === "onGoing") {
-            return 'On Going'
-            }
-            else if (status === "finished") {
-            return 'Finished'
-            }
-            else if (status === "toDo") {
-            return 'To Do'
+                if (!status) { // Si status (task.completed) es false...
+                return 'On Going' // ... El texto será on Going
+            }else { // Si es true...
+                return 'Finished' // ... El texto será finished
             }
         },
         formatDate(date) {
-            return dayjs(date).format('DD MMM');
+            return dayjs(date).format('DD MMM'); // Dar formato a la fecha
         }
         },
         mounted() {
-            this.userStore.fetchTasks()
+            this.userStore.fetchTasks() // LLamada a la API desde userStore
             
         }
 };
@@ -35,6 +32,7 @@ export default {
 <template>
     <h2 class="text-white ms-3">Recent Task</h2>
     <div class="recent-task">
+        <!-- Recorre la array de filtertaskArray para que muestre las 3 últimas tareas -->
         <div v-for="(task, key) in userStore.filtertasksArray" class="tasks col-md-4">
             <div class="card">
                 <div class="card-body">
@@ -47,7 +45,8 @@ export default {
                     <p class="card-text">{{ task.text }}</p>
                 </div>
                 <div class="card-footer">
-                    <p :class="task.status">{{ formatStatus(task.completed) }}</p>
+                    <!-- Añade la clase según si la tarea está completada o no -->
+                    <p :class="[!task.completed ? 'onGoing' : 'finished']">{{ formatStatus(task.completed) }}</p>
                 </div>
             </div>
         </div>
@@ -80,18 +79,12 @@ export default {
     border-radius: 40px;
     font-size: 16px;
 }
-.card-footer {
-    color: #ADB5CF;
-}
 
-.toDo {
+.finished {
   color: #3FDDC0;
 }
 .onGoing {
   color: #69A5FF;
-}
-.finished {
-  color: #FF84BF;
 }
 
 @media (min-width: 768px) {

@@ -10,12 +10,11 @@ export default {
   },
   methods: {
       async login() {
-          const userStore = useUserStore();
-          const isAuthenticated = userStore.loginUser(this.email, this.password);
+          const userStore = useUserStore(); // Llamamos a la función de userstore
+          const isAuthenticated = userStore.loginUser(this.email, this.password); // Llamamos a la función que comprobará el login
 
-          if (isAuthenticated) {
-              // Si el usuario está autenticado, configure el usuario actual en la tienda.
-              userStore.setCurrentUser(this.email);
+          if (isAuthenticated) { // Si el usuario se ha identificado bien (true)
+              userStore.setCurrentUser(this.email); 
               localStorage.setItem('authToken', 'your-token-here');
               this.$router.push('/home');
           } else {
