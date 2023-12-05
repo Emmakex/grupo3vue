@@ -107,9 +107,9 @@ export default {
 
 
 <template>
-  <div class=" col-xl-10 task-menu">
+  <div class=" col-xl-12 task-menu">
     <div>
-      <h2>Task Summary</h2>
+      <h2>Task List</h2>
     </div>
     <ul class="list-group list-group-flush">
       <li class="row titulos">

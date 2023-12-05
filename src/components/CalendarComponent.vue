@@ -116,7 +116,7 @@ h4{
   color: #fff;
 }
 .calendar-day {
-  height: 50px;
+  height: 40px;
   padding: 0;
   display: flex;
   align-items: center;

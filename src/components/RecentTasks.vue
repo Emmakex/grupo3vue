@@ -97,4 +97,8 @@ export default {
     height: 200px;
     }
 }
+.card-body {
+    height: 135px;
+    margin-bottom: 20px;
+}
 </style>

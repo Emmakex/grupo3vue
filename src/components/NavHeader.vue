@@ -7,12 +7,16 @@ export default {
     data() {
         return {
             datos: dayjs().format('dddd, DD MMMM YYYY'), // Fecha actual
+            userStore: useUserStore(),
+            tagSearch: ''
         };
     },
     computed: {
         currentUser() {
-            const userStore = useUserStore();
-            return userStore.users[0]; // Devuelve el usuario actual
+            return this.userStore.currentUser; // Devuelve el usuario actual
+        },
+        findTask(tag) {
+            this.userStore.searchTask(tag);
         }
     }
 }
@@ -73,9 +77,10 @@ export default {
                 type="search"
                 placeholder="Search..."
                 aria-label="Search"
+                v-model="tagSearch"
                 />
                 <span class="input-group-text">
-                <button class="btn btn-search" type="submit">
+                <button class="btn btn-search" type="submit" @click="this.findTask(tagSearch)">
                     <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

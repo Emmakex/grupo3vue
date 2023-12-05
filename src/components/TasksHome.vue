@@ -44,7 +44,7 @@ export default {
 </script>
 
 <template>
-    <div class=" col-xl-10 task-menu">
+    <div class=" col-xl-12 task-menu">
           <div>
             <h2>Task Summary</h2>
           </div>
@@ -121,6 +121,9 @@ li.row {
 @media (min-width: 1201px) {
   .text-start {
     display: block;
+  }
+  .text-white .text-start {
+    height: 100px;
   }
 }
 /* / End styles list task */
