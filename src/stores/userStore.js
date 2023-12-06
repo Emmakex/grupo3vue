@@ -10,6 +10,7 @@ export const useUserStore = defineStore('user', {
         ],
         currentUser: null, // Estado para el usuario actual
         tasks: [], // Estado para las tareas
+        search:''
     }),
     actions: {
         // función para registrar usuario
