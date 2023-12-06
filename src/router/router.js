@@ -5,6 +5,7 @@ import Login from '../components/Login.vue'
 import Register from '../components/Register.vue';
 import TasksList from '../components/TasksList.vue';
 import CalendarComponent from '../components/CalendarComponent.vue';
+import SearchResults from '../components/SearchResults.vue';
 
 // Constante para guardar las rutas
 const routes = [
@@ -13,6 +14,7 @@ const routes = [
     { path: '/register', component: Register },
     { path: '/taskslist', component: TasksList },
     { path: '/calendar', component: CalendarComponent },
+    { path: '/search', component: SearchResults},
     // ... otras rutas
 ]
 
