@@ -10,7 +10,6 @@ export const useUserStore = defineStore('user', {
         ],
         currentUser: null, // Estado para el usuario actual
         tasks: [], // Estado para las tareas
-        taskFound: [],
     }),
     actions: {
         // función para registrar usuario
@@ -118,14 +117,6 @@ export const useUserStore = defineStore('user', {
         },
     },
     getters: {
-        searchTask(tag) {
-            const result = this.tasks.find(task => task.tag === tag);
-            
-            if (result) {
-                this.taskFound.push(task.id) // Guarda id de las tareas que ha encontrado
-            }
-            console.log(this.taskFound) 
-        },
         // Función para filtrar el array de tareas y coger las tre últimas y mostrarlo en recent tasks
         filtertasksArray() {
             return this.tasks.slice(this.tasks.length - 3);
