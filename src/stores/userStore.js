@@ -8,20 +8,22 @@ export const useUserStore = defineStore('user', {
             role: 'developer',
             password: '1234'},
         ],
-        currentUser: null, // Estado para el usuario actual
-        tasks: [], // Estado para las tareas
-        search:''
+        currentUser: JSON.parse(localStorage.getItem('currentUser')) || null,
+        tasks: [],
+        search: ''
     }),
     actions: {
         // función para registrar usuario
         registerUser(name, email, role, password) {
             this.users.push({ name, email, role, password }); // guarda en el array users el nuevo objeto
+            localStorage.setItem('users', JSON.stringify(this.users));
         },
         // Función para loguear
         loginUser(email, password) { // Recibe por párametro el email y el password
             const user = this.users.find(user => user.email === email && user.password === password); // Si coincide el usuario y el password con el guardado
             if (user) {
                 this.currentUser = user; // Establecer el usuario actual
+                localStorage.setItem('currentUser', JSON.stringify(user));
                 return true;
             } else {
                 return false;
@@ -31,10 +33,12 @@ export const useUserStore = defineStore('user', {
             const user = this.users.find(user => user.email === email);
             if (user) {
                 this.currentUser = user; // Actualizar el usuario actual
+                localStorage.setItem('currentUser', JSON.stringify(user));
             }
         },
         logoutUser() {
             this.currentUser = null; // Limpiar el usuario actual
+            localStorage.removeItem('currentUser');
         },
         // Llamada a la API
         fetchTasks() {
