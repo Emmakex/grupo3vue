@@ -17,6 +17,12 @@ export default {
         }
     },
     components: { RouterLink },
+
+    methods: {
+        resetSearch() {
+            this.userStore.search = ''; // Restablece el campo de búsqueda
+        }
+    },
     
 }
 </script>
@@ -69,7 +75,7 @@ export default {
         </li>
         <li>
         <div class="search">
-            <form class="d-flex form-search" role="search">
+            <form class="d-flex form-search" @submit.prevent="resetSearch" role="search">
             <div class="input-group">
                 <input
                 class="form-control"
