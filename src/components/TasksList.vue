@@ -214,10 +214,12 @@ li.row {
 input, textarea{
   border: 3px solid #3261FF;
   border-radius:4px;
-  padding:11px 5px;
+  padding:8px 5px;
   box-shadow:none;
   text-shadow:none;
   outline:none;
+  width: 100%;
+  background-color: #181A21;
 }
 .btn-primary-list {
   background:#3261FF;

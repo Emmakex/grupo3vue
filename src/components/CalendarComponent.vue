@@ -75,9 +75,9 @@ export default {
   <!--Calendar-->
   <div class="row calendarContainer">
     <div class="col">
-      <h4 class="text-center mb-3">
+      <h2 class="text-white text-center mb-4">
         {{ monthNames[calendar.month] }} {{ calendar.year }}
-      </h4>
+      </h2>
       <div class="d-flex justify-content-between align-items-center mb-2">
         <button @click="prevMonth" class="btn btn-sm btn-primary">
           &lt; Prev

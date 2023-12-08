@@ -30,7 +30,7 @@ export default {
 </script>
 
 <template>
-    <h2 class="text-white ms-3">Recent Task</h2>
+    <h2 class="text-white ms-3 mb-4">Recent Task</h2>
     <div class="recent-task">
         <!-- Recorre la array de filtertaskArray para que muestre las 3 últimas tareas -->
         <div v-for="(task, key) in userStore.filtertasksArray" class="tasks col-md-4">

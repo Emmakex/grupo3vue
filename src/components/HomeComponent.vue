@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <div class="d-flex">
+  <div class="d-flex justify-content-between">
     <div class="col-xxl-7 col-xl-8 col-lg-12">
       <RecentTasks />
     </div>

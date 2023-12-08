@@ -46,7 +46,7 @@ export default {
 <template>
     <div class=" col-xl-12 task-menu">
           <div>
-            <h2>Task Summary</h2>
+            <h2 class="mt-5 mb-4">Task Summary</h2>
           </div>
           <ul class="list-group list-group-flush">
             <li class="row titulos">
