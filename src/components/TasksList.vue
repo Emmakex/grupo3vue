@@ -166,25 +166,27 @@ export default {
           </svg>
         </div>
         <!-- Formulario de Edición -->
-        <div v-if="editingTaskId === task.id" class="edit-form row mt-4">
-          <div class="col-6 col-xl-4">
-            <input class="text-white" type="text" v-model="taskNameEdit" placeholder="Task Name" />
-          </div>
-          <div class="col-xl-4 text-start">
-            <textarea class="text-white" v-model="taskDescriptionEdit" placeholder="Description"></textarea>
-          </div>
-          <div class="col-3 col-xl-2">
-            <select class="select-primary-list" v-model="taskStatusEdit">
-                <option value="onGoing">On Going</option>
-                <option value="finished">Finished</option>
-            </select>
-          </div>
-            <!-- Añade otros campos si son necesarios -->
-          <div class="col-3 col-xl-2">
-            <button class="btn-primary-list" @click="agregarOEditarTarea">Edit</button>
-          </div>
-        </div>
-      </li> 
+        <ul>
+          <li v-if="editingTaskId === task.id" class="edit-form row mt-4">
+            <div class="col-6 col-xl-4">
+              <input class="text-white" type="text" v-model="taskNameEdit" placeholder="Task Name" />
+            </div>
+            <div class="col-xl-4 text-start">
+              <textarea class="text-white" v-model="taskDescriptionEdit" placeholder="Description"></textarea>
+            </div>
+            <div class="col-3 col-xl-2">
+              <select class="select-primary-list" v-model="taskStatusEdit">
+                  <option value="onGoing">On Going</option>
+                  <option value="finished">Finished</option>
+              </select>
+            </div>
+              <!-- Añade otros campos si son necesarios -->
+            <div class="col-3 col-xl-2">
+              <button class="btn-primary-list" @click="agregarOEditarTarea">Edit</button>
+            </div>
+          </li>
+        </ul>
+      </li>
     </ul>
   </div>
 </template>
@@ -222,7 +224,7 @@ input, textarea{
   background-color: #181A21;
 }
 textarea{
-  max-height: 100px;
+  height: 7em;
 }
 .btn-primary-list {
   background:#3261FF;
