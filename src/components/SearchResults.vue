@@ -228,9 +228,8 @@ input, textarea{
   background:#214a80;
   outline:none;
 }
-
 .noFound {
-  width: 25%;
+  width: 90%;
   text-align: center;
   font-size: 2rem;
   color: #fff;
@@ -240,6 +239,9 @@ input, textarea{
 @media (min-width: 1201px) {
   .text-start {
     display: block;
+  }
+  .noFound{
+    width: 30%;
   }
 }
 /* / End styles list task */

@@ -62,7 +62,7 @@ export default {
         <!-- menú de usuario -->
         <li class="user-name my-auto">
             <img
-            src="/jacintaC.jpg"
+            src="/user.jpg"
             alt="user"
             width="30"
             height="30"
