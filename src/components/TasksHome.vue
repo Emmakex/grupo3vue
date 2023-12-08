@@ -50,8 +50,8 @@ export default {
           </div>
           <ul class="list-group list-group-flush">
             <li class="row titulos">
-              <div class="col-6 col-xl-3">TASK NAME</div>
-              <div class="col-xl-3 text-start">TASK DESCRIPTION</div>
+              <div class="col-6 col-xl-4">TASK NAME</div>
+              <div class="col-xl-4 text-start">TASK DESCRIPTION</div>
               <div class="col-3 col-xl-2">STATUS</div>
               <div class="col-3 col-xl-2">ACTIONS</div>
             </li>
@@ -61,8 +61,8 @@ export default {
               class="row text-white"
               :key="task"
             >
-              <div class="col-6 col-xl-3">{{ task.text }}</div>
-              <div class="col-xl-3 text-start">{{ task.description }}</div>
+              <div class="col-6 col-xl-4">{{ task.text }}</div>
+              <div class="col-xl-4 text-start">{{ task.description }}</div>
               <div class="col-3 col-xl-2" :class="[!task.completed ? 'onGoing' : 'finished']">
                 {{ formatStatus(task.completed) }}
               </div>
@@ -121,9 +121,6 @@ li.row {
 @media (min-width: 1201px) {
   .text-start {
     display: block;
-  }
-  .text-white .text-start {
-    height: 100px;
   }
 }
 /* / End styles list task */
