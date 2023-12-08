@@ -19,7 +19,7 @@ export default {
     <div class="col-xxl-7 col-xl-8 col-lg-12">
       <RecentTasks />
     </div>
-    <div class="ms-5 col-xl-4 d-none-mobile">
+    <div class="col-xl-4 d-none-mobile">
       <CalendarComponent />
     </div>
   </div>
