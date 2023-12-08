@@ -167,11 +167,11 @@ export default {
         </div>
         <!-- Formulario de Edición -->
         <div v-if="editingTaskId === task.id" class="edit-form row mt-4">
-          <div class="col-6 col-xl-3">
-            <input type="text" v-model="taskNameEdit" placeholder="Task Name" />
+          <div class="col-6 col-xl-4">
+            <input class="text-white" type="text" v-model="taskNameEdit" placeholder="Task Name" />
           </div>
-          <div class="col-xl-3 text-start">
-            <textarea cols="25" rows="5" v-model="taskDescriptionEdit" placeholder="Description"></textarea>
+          <div class="col-xl-4 text-start">
+            <textarea class="text-white" v-model="taskDescriptionEdit" placeholder="Description"></textarea>
           </div>
           <div class="col-3 col-xl-2">
             <select class="select-primary-list" v-model="taskStatusEdit">
@@ -220,6 +220,9 @@ input, textarea{
   outline:none;
   width: 100%;
   background-color: #181A21;
+}
+textarea{
+  max-height: 100px;
 }
 .btn-primary-list {
   background:#3261FF;
