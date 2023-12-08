@@ -113,17 +113,17 @@ export default {
     </div>
     <ul class="list-group list-group-flush">
       <li class="row titulos">
-        <div class="col-6 col-xl-3">TASK NAME</div>
-        <div class="col-xl-3 text-start">TASK DESCRIPTION</div>
+        <div class="col-6 col-xl-4">TASK NAME</div>
+        <div class="col-xl-4 text-start">TASK DESCRIPTION</div>
         <div class="col-3 col-xl-2">STATUS</div>
         <div class="col-3 col-xl-2">ACTIONS</div>
       </li>
       <!-- Añadir tarea -->
       <li class="row text-white">
-        <div class="col-6 col-xl-3">
+        <div class="col-6 col-xl-4">
           <input type="text" v-model="taskName" placeholder="Task" /> <!-- conectamos el input con variable taskName -->
         </div>
-        <div class="col-xl-3 text-start">
+        <div class="col-xl-4 text-start">
           <input type="text" v-model="taskDescription" placeholder="Description" /> <!-- conectamos el input con variable taskDescription -->
         </div>
         <div class="col-3 col-xl-2">
@@ -142,8 +142,8 @@ export default {
         class="row text-white task-item" 
         :key="task.id" 
       >
-        <div class="col-6 col-xl-3">{{ task.text }}</div>
-        <div class="col-xl-3 text-start">{{ task.description }}</div>
+        <div class="col-6 col-xl-4">{{ task.text }}</div>
+        <div class="col-xl-4 text-start">{{ task.description }}</div>
         <div class="col-3 col-xl-2" :class="[!task.completed ? 'onGoing' : 'finished']">
           {{ formatStatus(task.completed) }}
         </div>
