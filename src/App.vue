@@ -37,7 +37,7 @@ export default {
     <main>
       <div class="container row">
         <!-- Renderizar MenuLeft solo si la ruta no es Login o Register -->
-        <section class="col-3 col-lg-2" v-if="!isLoginOrRegister">
+        <section class="col-3 col-lg-2 px-0" v-if="!isLoginOrRegister">
           <MenuLeft />
         </section>
         <!-- Sección principal -->

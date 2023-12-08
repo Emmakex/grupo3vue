@@ -44,7 +44,7 @@ export default {
 </script>
 
 <template>
-    <div class=" col-xl-12 task-menu">
+    <div class="col-xl-12 task-menu">
           <div>
             <h2 class="mt-5 mb-4">Task Summary</h2>
           </div>

@@ -9,12 +9,11 @@ export default {
 </script>
 
 <template>
-    <div class="menu-left">
+    <div class="col-auto px-3 menu-left d-flex justify-content-center">
         <div class="row flex-nowrap container-fluid">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0">
             <!-- menu -->
             <div
-                class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+                class="d-flex flex-column align-items-center align-items-sm-start pt-2 text-white min-vh-100"
             >
                 <ul
                 class="nav nav-pills flex-column mb-4 align-items-center align-items-sm-start"
@@ -96,7 +95,6 @@ export default {
                 </li>
                 <!-- /Menu calendar -->
                 </ul>
-            </div>
             </div>
             <!-- /menu -->
         </div>
