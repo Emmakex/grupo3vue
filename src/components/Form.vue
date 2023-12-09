@@ -1,80 +1,99 @@
 <script>
+export default {
+    data() {
+        return {
+            name: '',
+            email: '',
+            description: ''
+        };
+    },
+    methods: {
+        submit() {
+            this.$router.push('/'); //Hacer que envie mail y se redireccione a otro sitio 
+        }
+    }
+}
 </script>
 
 <template>
-  <div class="col-xl-12">
-      <h2>Contact us for incidents</h2>
-    
+  <div class="col-xl-12 text-center">
+      <h2 class="text-white mb-4">Contact for incidents</h2>
+      <form @submit.prevent="submit" class="login-dark text-white center">
+        <div class="text-left mb-2">
+          <label for="name">Name</label>
+          <input type="text" id="name" v-model="name" required class="form-control">
+        </div>
+        <div class="text-left mb-2">
+          <label for="email">Email</label>
+          <input type="email" id="email" v-model="email" required class="form-control">
+        </div>
+        <div class="text-left mb-2">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+      </form>
   </div>
 </template>
 
 <style scoped>
-/* Styles list task */
-.titulos, h2 {
-  color: #ffffff;
-  font-weight: 600;
-}
-li.row {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.colorTask {
-  color: #CBCEE2;
-}
-.finished{
-  color: #3FDDC0;
-}
-.onGoing {
-  color: #69A5FF;
-}
-.text-start {
-  display: none;
-}
-input, textarea{
-  border: 3px solid #3261FF;
+.login-dark{
+  max-width:600px;
+  width:90%;
+  background-color:#262B3E;
+  padding:40px;
   border-radius:4px;
-  padding:8px 5px;
+  top:50%;
+  left:50%;
+  color:#fff;
+  box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+  margin: auto;
+}
+.login-dark .form-control {
+  background:none;
+  border:none;
+  border-bottom:1px solid #434a52;
+  border-radius:0;
   box-shadow:none;
-  text-shadow:none;
   outline:none;
-  width: 100%;
-  background-color: #181A21;
+  color:inherit;
 }
-textarea{
-  height: 7em;
-}
-.btn-primary-list {
+.login-dark .btn-primary {
   background:#3261FF;
-  color: #fff;
   border:none;
   border-radius:4px;
-  padding:11px 20px;
+  padding:11px 75px;
   box-shadow:none;
+  margin-top:26px;
   text-shadow:none;
   outline:none;
 }
-.btn-primary-list:hover, .btn-primary-list:active {
+.login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
   background:#214a80;
   outline:none;
 }
-.select-primary-list {
-  background:#3261FF;
-  color: #fff;
-  border:none;
-  border-radius:4px;
-  padding:12px 10px 13px 10px;
-  box-shadow:none;
-  text-shadow:none;
-  outline:none;
+.login-dark form .forgot {
+  display:block;
+  text-align:center;
+  font-size:12px;
+  color:#6f7a85;
+  opacity:0.9;
+  text-decoration:none;
 }
-.select-primary-list:hover, .select-primary-list:active {
-  background:#214a80;
-  outline:none;
+.login-dark form .forgot:hover, .login-dark form .forgot:active {
+  opacity:1;
+  text-decoration:none;
 }
-@media (min-width: 1201px) {
-  .text-start {
-    display: block;
-  }
+.login-dark .btn-primary:active {
+  transform:translateY(1px);
 }
-/* / End styles list task */
+.text-center{
+  text-align: center;
+}
+.text-left{
+  text-align: left;
+}
+.mb-2{
+  margin-top: 2em;
+}
 </style>
