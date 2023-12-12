@@ -9,7 +9,32 @@ export default {
     },
     methods: {
         submit() {
-            this.$router.push('/home'); //Envia el mail y se redireccione al home
+          const headers = new Headers()
+          headers.append("Content-Type", "application/json") //Se crea el header de contenido tipo json
+
+          const body = {
+            "name": this.name,
+            "email": this.email,
+            "description": this.description //Se crea un objeto con los valores que ingreso el usuario
+          }
+
+          const options = {
+            method: "POST",
+            headers,
+            mode: "cors",
+            body: JSON.stringify(body), //Configuramos la llamada a la api
+          }
+
+          fetch("https://eo45n0zo8leaa39.m.pipedream.net", options) //Hace la llamada a pipedream con lo que ingreso el usuario
+
+          const userName = this.name
+
+          //Limpiamos los inputs
+          this.name = ''
+          this.email = ''
+          this.description = ''
+
+          alert(`Thanks ${userName}! We'll get back to you soon.`) //Muestra que el email se envio correctamente
         }
     }
 }
@@ -32,7 +57,7 @@ export default {
           </div>
           <div class="text-left mb-4">
             <label for="description" class="mb-2">Description</label>
-            <textarea id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea id="exampleFormControlTextarea1" rows="3" v-model="description"></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-block mb-5">Enviar</button>
         </form>
