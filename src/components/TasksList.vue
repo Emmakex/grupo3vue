@@ -104,37 +104,35 @@ export default {
 }
 </script>
 
-
-
 <template>
-  <div class=" col-xl-12 task-menu">
+  <div class="col-xl-12 task-menu">
     <div>
       <h2>Task List</h2>
     </div>
     <ul class="list-group list-group-flush">
       <!-- Añadir tarea -->
-      <li class="col text-white edit mt-4">
-        <div class="col-6 col-xl-4 mb-3">
+      <li class="row text-white edit mt-4">
+        <div class="col-12 col-lg-4 mb-3">
           <input type="text" v-model="taskName" placeholder="Task" /> <!-- conectamos el input con variable taskName -->
         </div>
-        <div class="col-xl-4 text-start mb-3">
+        <div class="col-12 col-lg-4 mb-3">
           <input type="text" v-model="taskDescription" placeholder="Description" /> <!-- conectamos el input con variable taskDescription -->
         </div>
-        <div class="col-3 col-xl-2 mb-3">
+        <div class="col-12 col-lg-2 mb-3">
           <select class="select-primary-list" v-model="taskStatus"> <!-- conectamos el select con variable taskStatus -->
             <option value="onGoing">On Going</option>
             <option value="finished">Finished</option>
           </select>
         </div>
-        <div class="col-3 col-xl-2 mb-3">
+        <div class="col-12 col-lg-2 mb-3">
           <button class="btn-primary-list" @click="agregarOEditarTarea">Add task</button>
         </div>
       </li>
       <li class="row titulos">
-        <div class="col-6 col-xl-4">TASK NAME</div>
-        <div class="col-xl-4 text-start">TASK DESCRIPTION</div>
-        <div class="col-3 col-xl-2">STATUS</div>
-        <div class="col-3 col-xl-2">ACTIONS</div>
+        <div class="col-6 col-lg-4">TASK NAME</div>
+        <div class="col-lg-4 text-start">TASK DESCRIPTION</div>
+        <div class="col-3 col-lg-2">STATUS</div>
+        <div class="col-3 col-lg-2">ACTIONS</div>
       </li>
       <!-- Recorre cada objeto de la colección nombresLista e imprime la tarea -->
       <li
@@ -142,13 +140,13 @@ export default {
         class="row text-white task-item" 
         :key="task.id" 
       >
-        <div class="col-6 col-xl-4">{{ task.text }}</div>
-        <div class="col-xl-4 text-start">{{ task.description }}</div>
-        <div class="col-3 col-xl-2" :class="[!task.completed ? 'onGoing' : 'finished']">
+        <div class="col-6 col-lg-4">{{ task.text }}</div>
+        <div class="col-lg-4 text-start">{{ task.description }}</div>
+        <div class="col-3 col-lg-2" :class="[!task.completed ? 'onGoing' : 'finished']">
           {{ formatStatus(task.completed) }}
         </div>
-        <div class="col-3 col-xl-2 editDelete">
-          <div class="col-xl-4">
+        <div class="col-3 col-lg-2 editDelete">
+          <div class="col-lg-6">
             <svg @click="iniciarEdicion(task)"
             xmlns="http://www.w3.org/2000/svg" 
             width="16" height="16" 
@@ -158,7 +156,7 @@ export default {
               <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
             </svg>
           </div>
-          <div class="col-xl-4">
+          <div class="col-6">
             <svg @click="eliminarTarea(task.id)"
             xmlns="http://www.w3.org/2000/svg" 
             width="16" height="16" 
@@ -172,20 +170,20 @@ export default {
         <!-- Formulario de Edición -->
         <ul>
           <li v-if="editingTaskId === task.id" class="edit-form row mt-4">
-            <div class="col-6 col-xl-4">
+            <div class="col-12 col-lg-4 mb-3">
               <input class="text-white" type="text" v-model="taskNameEdit" placeholder="Task Name" />
             </div>
-            <div class="col-xl-4 text-start">
+            <div class="col-lg-4 mb-3 text-start">
               <textarea class="text-white" v-model="taskDescriptionEdit" placeholder="Description"></textarea>
             </div>
-            <div class="col-3 col-xl-2">
+            <div class="col-12 col-lg-2 mb-3">
               <select class="select-primary-list" v-model="taskStatusEdit">
                   <option value="onGoing">On Going</option>
                   <option value="finished">Finished</option>
               </select>
             </div>
               <!-- Añade otros campos si son necesarios -->
-            <div class="col-3 col-xl-2">
+            <div class="col-12 col-lg-2 mb-3">
               <button class="btn-primary-list" @click="agregarOEditarTarea">Edit</button>
             </div>
           </li>
@@ -196,7 +194,6 @@ export default {
 </template>
 
 <style scoped>
-/* Styles list task */
 .titulos, h2 {
   color: #ffffff;
   font-weight: 600;
@@ -214,15 +211,9 @@ li.row {
 .onGoing {
   color: #69A5FF;
 }
-
 .edit .text-start {
   display: block;
 }
-
-.edit button, .edit select {
-  width: 150px;
-}
-
 .editDelete {
   display: flex;
   flex-direction: row;
@@ -248,7 +239,8 @@ textarea{
   color: #fff;
   border:none;
   border-radius:4px;
-  padding:11px 20px;
+  width: 100%;
+  padding:11px 0px;
   box-shadow:none;
   text-shadow:none;
   outline:none;
@@ -262,7 +254,8 @@ textarea{
   color: #fff;
   border:none;
   border-radius:4px;
-  padding:12px 10px 13px 10px;
+  width: 100%;
+  padding:12px 5px 13px 5px;
   box-shadow:none;
   text-shadow:none;
   outline:none;
@@ -271,28 +264,9 @@ textarea{
   background:#214a80;
   outline:none;
 }
-@media (min-width: 769px) {
-  .edit {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .edit div {
-    margin-right: 20px;
-    margin-left: -10px;
-  }
-
-  .edit select {
-    margin-left: -5px;
-  }
-  .edit button {
-    margin-left: -30px;
-  }
-}
-@media (min-width: 1201px) {
+@media (min-width: 992px) {
   .text-start {
     display: block;
   }
 }
-/* / End styles list task */
 </style>

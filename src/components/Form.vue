@@ -17,6 +17,7 @@ export default {
 
 <template>
   <div class="row">
+    <!-- Form -->
     <div class="col-12 col-md-7">
         <h2 class="text-white mb-2 text-center">Contact for incidents</h2>
         <h4 class="mb-4 text-center">Fill up form bellow to send us a message.</h4>
@@ -36,7 +37,9 @@ export default {
           <button type="submit" class="btn btn-primary btn-block mb-5">Enviar</button>
         </form>
     </div>
-    <div class="col-12 col-md-4 offset-md-1 col-lg-3 offset-lg-2 d-flex justify-content-center direction-c">
+    <!-- /Form -->
+    <!-- Datos de Contacto -->
+    <div class="col-12 col-md-4 offset-md-1 col-lg-3 offset-lg-2 d-flex justify-content-center date">
         <div class="text-white d-flex align-items-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill me-3" viewBox="0 0 16 16">
             <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
@@ -62,6 +65,7 @@ export default {
           <a href="https://github.com/Emmakex/grupo3vue" target="_blank" class="link-style">Git hub Grupo 3</a>
         </div>
     </div>
+    <!-- /Datos de Contacto -->
   </div>
 </template>
 
@@ -70,7 +74,8 @@ h4{
   color: #9FA8C7;
   font-size: 1.1em;
 }
-.direction-c{
+.date{
+    font-size: 1.1em;
     flex-direction: column;
 }
 .link-style{
