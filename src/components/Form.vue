@@ -19,19 +19,19 @@ export default {
   <div class="row">
     <!-- Form -->
     <div class="col-12 col-md-7">
-        <h2 class="text-white mb-2 text-center">Contact for incidents</h2>
+        <h2 class="text-white mb-3 text-center">Contact for incidents</h2>
         <h4 class="mb-4 text-center">Fill up form bellow to send us a message.</h4>
         <form @submit.prevent="submit" class="login-dark text-white">
-          <div class="text-left mb-2">
-            <label for="name" class="mb-1">Name</label>
+          <div class="text-left mb-3">
+            <label for="name" class="mb-2">Name</label>
             <input type="text" id="name" v-model="name" required>
           </div>
-          <div class="text-left mb-2">
-            <label for="email" class="mb-1">Email</label>
+          <div class="text-left mb-3">
+            <label for="email" class="mb-2">Email</label>
             <input type="email" id="email" v-model="email" required>
           </div>
           <div class="text-left mb-4">
-            <label for="description" class="mb-1">Description</label>
+            <label for="description" class="mb-2">Description</label>
             <textarea id="exampleFormControlTextarea1" rows="3"></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-block mb-5">Enviar</button>
@@ -77,6 +77,7 @@ h4{
 .date{
     font-size: 1.1em;
     flex-direction: column;
+    line-height: 2em;
 }
 .link-style{
   text-decoration: none;
