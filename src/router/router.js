@@ -14,7 +14,6 @@ const routes = [
     { path: '/home', component: HomeComponent, meta: { requiresAuth: true }},
     { path: '/register', component: Register },
     { path: '/taskslist', component: TasksList },
-    { path: '/calendar', component: CalendarComponent },
     { path: '/form', component: Form },
     { path: '/search', component: SearchResults},
     // ... otras rutas
