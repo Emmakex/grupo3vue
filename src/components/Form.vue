@@ -9,7 +9,7 @@ export default {
     },
     methods: {
         submit() {
-            this.$router.push('/'); //Hacer que envie mail y se redireccione a otro sitio 
+            this.$router.push('/home'); //Envia el mail y se redireccione al home
         }
     }
 }
