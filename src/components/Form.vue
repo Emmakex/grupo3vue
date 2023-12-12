@@ -56,8 +56,8 @@ export default {
             <input type="email" id="email" v-model="email" required>
           </div>
           <div class="text-left mb-4">
-            <label for="description" class="mb-2">Description</label>
-            <textarea id="exampleFormControlTextarea1" rows="3" v-model="description"></textarea>
+            <label for="description" class="mb-2" id="description">Description</label>
+            <textarea id="exampleFormControlTextarea1" rows="3" v-model="description" aria-labelledby="description"></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-block mb-5">Enviar</button>
         </form>

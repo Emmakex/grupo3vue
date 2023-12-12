@@ -113,10 +113,12 @@ export default {
       <!-- Añadir tarea -->
       <li class="row text-white edit mt-4">
         <div class="col-12 col-lg-4 mb-3">
-          <input type="text" class="text-white" v-model="taskName" placeholder="Task" /> <!-- conectamos el input con variable taskName -->
+          <label class="d-none" id="task">Task</label>
+          <input type="text" class="text-white" v-model="taskName" placeholder="Task" aria-labelledby="task" /> <!-- conectamos el input con variable taskName -->
         </div>
         <div class="col-12 col-lg-4 mb-3">
-          <input type="text" class="text-white" v-model="taskDescription" placeholder="Description" /> <!-- conectamos el input con variable taskDescription -->
+          <label class="d-none" id="description">Description</label>
+          <input type="text" class="text-white" v-model="taskDescription" placeholder="Description" aria-labelledby="description"/> <!-- conectamos el input con variable taskDescription -->
         </div>
         <div class="col-12 col-lg-2 mb-3">
           <select class="select-primary-list" v-model="taskStatus"> <!-- conectamos el select con variable taskStatus -->
@@ -171,10 +173,12 @@ export default {
         <ul>
           <li v-if="editingTaskId === task.id" class="edit-form row mt-4">
             <div class="col-12 col-lg-4 mb-3">
-              <input class="text-white" type="text" v-model="taskNameEdit" placeholder="Task Name" />
+              <label class="d-none" id="task">Task</label>
+              <input class="text-white" type="text" v-model="taskNameEdit" placeholder="Task Name" aria-labelledby="task" />
             </div>
-            <div class="col-lg-4 mb-3 text-start">
-              <textarea class="text-white" v-model="taskDescriptionEdit" placeholder="Description"></textarea>
+            <div class="col-lg-4 mb-3">
+              <label class="d-none" id="description">Description</label>
+              <textarea class="text-white" v-model="taskDescriptionEdit" placeholder="Description" aria-labelledby="description"></textarea>
             </div>
             <div class="col-12 col-lg-2 mb-3">
               <select class="select-primary-list" v-model="taskStatusEdit">

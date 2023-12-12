@@ -87,6 +87,7 @@ export default {
                 <router-link to="/search">
                     <span class="input-group-text">
                         <button class="btn btn-search" type="submit">
+                            <p>Buscar</p>
                             <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -137,6 +138,10 @@ justify-content: flex-end;
 }
 .btn-search {
 color: #fff;
+}
+
+.btn-search p {
+    display: none;
 }
 .date {
 color: #fff;
