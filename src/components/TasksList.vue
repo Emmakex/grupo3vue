@@ -113,10 +113,10 @@ export default {
       <!-- Añadir tarea -->
       <li class="row text-white edit mt-4">
         <div class="col-12 col-lg-4 mb-3">
-          <input type="text" v-model="taskName" placeholder="Task" /> <!-- conectamos el input con variable taskName -->
+          <input type="text" class="text-white" v-model="taskName" placeholder="Task" /> <!-- conectamos el input con variable taskName -->
         </div>
         <div class="col-12 col-lg-4 mb-3">
-          <input type="text" v-model="taskDescription" placeholder="Description" /> <!-- conectamos el input con variable taskDescription -->
+          <input type="text" class="text-white" v-model="taskDescription" placeholder="Description" /> <!-- conectamos el input con variable taskDescription -->
         </div>
         <div class="col-12 col-lg-2 mb-3">
           <select class="select-primary-list" v-model="taskStatus"> <!-- conectamos el select con variable taskStatus -->
